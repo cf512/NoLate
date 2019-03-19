@@ -1,67 +1,13 @@
-// //======Start of running script=========
-
-
-// $(document).ready(function () {
-
-//     // Storing our query string for OpenWeatherMap API
-
-//     // This is our API key
-//     var APIKey = "f811d6890d096d171ee1586e5b3264b4";
-//     var toLocation = localStorageObject.toCity + ",us";
-
-
-//     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=Austin,us&APPID=f811d6890d096d171ee1586e5b3264b4&units=imperial";
-//     // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f811d6890d096d171ee1586e5b3264b4";
-
-//     // Perfoming an AJAX GET request to our queryURL
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     })
-
-//         // After the data from the AJAX request comes back
-//         .then(function (response) {
-
-//             // Saving the response object (and console log for object check)
-//             var newResponse = response;
-//             console.log(response);
-//             console.log(newResponse);
-//             var newDiv = $("<div id='weatherPrintDiv'></div>");
-
-//             //=======================================================
-//             //=======you have to traverse the forecast the get the most accurate data for now
-//             //=======the API array starts at [0] = today @ 00:00:00
-
-//             // Creating Elements and storing the text data
-//             var printArray = ["temp", "humidity", "description"]
-//             printArray.forEach(function (element) {
-
-//                 var newP = $("<p>");
-
-//                 newP.text("test " + element);
-
-
-//                 newDiv.append(newP);
-//             })
-//             for (i = 0; i < 39; i++) {
-//                 newDiv.append('<p>' + JSON.stringify(newResponse.list[i]) + '</p>');
-//             };
-
-//             // Prepending the created elements to the HTML.document
-//             $("#idOFWhatever").append(newDiv);
-//         });
-// });
-
-
 // ==============start of psuedocode comments, as if I had not done any development above
 // ==============================================================
 //global functions
+var arrayOfInclementWeather = ["rain", "snow", "fog", "drizzle", "sleet", "hail"];
 var umbrellaIcon = "";
 var umbrellaText = "";
 var parsedMaxTempArray = [];
 var parsedMinTempArray = [];
 var parsedConditionsArray = [];
-var arrayOfInclementWeather = ["rain", "snow", "fog", "drizzle", "sleet", "hail"];
+
 var day1 = {
     maxTemp: 0,
     minTemp: 0,
@@ -95,6 +41,22 @@ var day5 = {
 
 // function updatePrintDisplay(object);
 //this updates the html text display
+function updatePrintDisplay(array){
+    console.log("updatePrintDisplay ran");
+    var newCollection = $('<div>This is a Div</div>');
+    $('#parentDiv').append(newCollection);
+    for(i=0; i < array.length; i++){
+        console.log("for loop" + array[i]);
+        newCollection.append($('<p>'+array[i]+": "+array[i+1]+'</p>')); 
+        //iterating twice so that I am using array like a dictionary
+        console.log(i);
+        i++; 
+        console.log(i);
+    };
+
+    console.log(newCollection);
+    $('#parentDiv').append(newCollection);
+};
 
 //function updateChartJS();
 //this pushes data into the forecastChart
@@ -138,25 +100,34 @@ $(document).ready(function () {
 
     //test harness for pushing data
     //always false data
-    // cityConnection.set({
-    //     lastUpdate: Date.now(),
-    // });
-
-    //always true data
     cityConnection.set({
-        lastUpdate: $.now() + (1000 * 60 * 10.5),
-        sunset: 1553042478,
-        description: "broken clouds",
-        icon: "04d",
-        id: 803,
-        main: "Clouds",
+        lastUpdate: Date.now(),
         temp: 71.35,
         pressure: 1026,
         humidity: 36,
         speed: 4.7,
+        description: "broken clouds",
+        icon: "04d",
+        id: 803,
+        main: "Clouds",
         clouds: 24,
-
+        sunset: 1553042478,
     });
+
+    //always true data
+    // cityConnection.set({
+    //     lastUpdate: $.now() + (1000 * 60 * 10.5),
+    //     temp: 71.35,
+    //     pressure: 1026,
+    //     humidity: 36,
+    //     speed: 4.7,
+    //     description: "broken clouds",
+    //     icon: "04d",
+    //     id: 803,
+    //     main: "Clouds",
+    //     clouds: 24,
+    //     sunset: 1553042478,
+    //    });
 
     cityConnection.on("value", function (snapshot) {
         //firebase inspect city last updated timestamp compare with Date.now()+10minutes
@@ -169,34 +140,29 @@ $(document).ready(function () {
 
         if (snapshot.val().lastUpdate > $.now() + (1000 * 60 * 10)){
         //if less than = use firebase data
-        var newCollection = $('<div>');
-        newCollection.append($('<p>'+snapshot.val().temp+'</p>'));
+        var firebaseArray = [];
+        firebaseArray.push("Temperature");
+        firebaseArray.push(snapshot.val().temp+"'F");
+        //     main.temp: 71.35,
+        //     main.pressure: 1026,
+        //     main.humidity: 36,
+        //     wind.speed: 4.7,
+        //     weather.description: "broken clouds",
+        //     weather.icon: "04d",
+        //     weather.id: 803,
+        //     weather.main: "Clouds",
+        //     clouds.all: 24,
+        //     sys.sunset: 1553042478,
+        
+        updatePrintDisplay(firebaseArray);
 
-        $('#parentDiv').append(newCollection);
 
         } else {
             //if greater than = use Ajax call mixed with firebase data for today(); error handle for display to current data;
             //ajax call actually goes here/
             // Ajax call to get data, then function calls printDisplay functions
 
-            // Ajax call to get current data to update text display
-            // current weather data retreives
-            //console.log to start and inspect for the following data
-            // rain in last hour 
-            // rain in last three hours 
-            // snow in last hour 
-            // snow in last three hours
-            // sys.sunset
-            // weather.description
-            // weather.icon
-            // weather.id 
-            // weather.main
-            // main.temp
-            // main.pressure
-            // main.humidity
-            // wind.speed
-            // wind.degs
-            // clouds.all
+            
 
             // Storing our query string for OpenWeatherMap API
 
@@ -221,32 +187,24 @@ $(document).ready(function () {
                     console.log(response);
                     console.log(newResponse);
 
-                    var newCollection = $('<div>');
-                    newCollection.append($('<p>'+response.main.temp+'</p>'));
+                    //create var object of data = location.data + weather.data ...etc
+                    var ajaxResponseArray = [];
+                    ajaxResponseArray.push("Temperature");
+                    ajaxResponseArray.push(newResponse.main.temp+ "'F");
+                     //     main.temp: 71.35,
+                    //     main.pressure: 1026,
+                    //     main.humidity: 36,
+                    //     wind.speed: 4.7,
+                    //     weather.description: "broken clouds",
+                    //     weather.icon: "04d",
+                    //     weather.id: 803,
+                    //     weather.main: "Clouds",
+                    //     clouds.all: 24,
+                    //     sys.sunset: 1553042478,
 
-                    $('#parentDiv').append(newCollection);
+                    updatePrintDisplay(ajaxResponseArray)
+                    
 
-                    //=======================================================
-                    //=======you have to traverse the forecast the get the most accurate data for now
-                    //=======the API array starts at [0] = today @ 00:00:00
-
-                    // Creating Elements and storing the text data
-                    // var printArray = ["temp", "humidity", "description"]
-                    // printArray.forEach(function (element) {
-
-                    //     var newP = $("<p>");
-
-                    //     newP.text("test " + element);
-
-
-                    //     newDiv.append(newP);
-                    // })
-                    // for (i = 0; i < 39; i++) {
-                    //     newDiv.append('<p>' + JSON.stringify(newResponse.list[i]) + '</p>');
-                    // };
-
-                    // // Prepending the created elements to the HTML.document
-                    // $("#idOFWhatever").append(newDiv);
                 });
 
         }
@@ -263,7 +221,7 @@ $(document).ready(function () {
 
 
 
-        //create var object of data = location.data + weather.data ...etc
+        
         //call turnDegreesIntoCardinalDirection();
         //add returned value to object of data
 
