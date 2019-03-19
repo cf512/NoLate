@@ -41,23 +41,23 @@ var day5 = {
 
 // function updatePrintDisplay(object);
 //this updates the html text display
-function updatePrintDisplay(array){
+function updatePrintDisplay(array) {
     console.log("updatePrintDisplay ran");
     var newCollection = $('<div>This is a Div</div>');
     $('#parentDiv').append(newCollection);
-    for(i=0; i < array.length-6; i++){
-        newCollection.append($('<p>'+array[i]+": "+array[i+1]+'</p>')); 
+    for (i = 0; i < array.length - 7; i++) {
+        newCollection.append($('<p>' + array[i] + ": " + array[i + 1] + '</p>'));
         //iterating twice so that I am using array like a dictionary
-        i++; 
+        i++;
     };
 
     $('#parentDiv').append(newCollection);
 };
 
-function updateFirebase(newResponse){
+function updateFirebase(newResponse) {
     console.log("updateFirebase");
     console.log(newResponse);
-        cityConnection.set({
+    cityConnection.set({
         lastUpdate: Date.now(),
         temp: newResponse.main.temp,
         pressure: newResponse.main.pressure,
@@ -69,32 +69,41 @@ function updateFirebase(newResponse){
         main: newResponse.weather[0].main,
         clouds: newResponse.clouds.all,
         sunset: newResponse.sys.sunset,
+        name: newResponse.name
     });
     cityConnection.once("value", function (snapshot) {
         console.log(snapshot.val());
     });
-    
+
 };
 //function updateChartJS(array);
 //this pushes data into the forecastChart\
 
 //function compareWeatherId(array);
 //this checks the weatherId against a list
-function compareWeatherId(array){
+function compareWeatherId(array) {
     console.log("compareWeatherRan");
-    if(200 < array[17] && array[17] < 299){
+    if (200 < array[17] && array[17] < 299) {
         $('#umbrellaDiv').text("Thunderstorms");
-    }else if(300 < array[17] && array[17] < 399){
+        appendIcon(array);
+    } else if (300 < array[17] && array[17] < 399) {
         $('#umbrellaDiv').text("Drizzle");
-    }else if(500 < array[17] && array[17] < 599){
+        appendIcon(array);
+    } else if (500 < array[17] && array[17] < 599) {
         $('#umbrellaDiv').text("It gone rain");
-    }else if(600 < array[17] && array[17] < 699){
+        appendIcon(array);
+    } else if (600 < array[17] && array[17] < 699) {
         $('#umbrellaDiv').text("Snow");
-    }else{
+        appendIcon(array);
+    } else {
         $('#umbrellaDiv').text("Its going to be a wonderful day");
-    }
+        $('#umbrellaDiv').append($('<img src="http://openweathermap.org/img/w/02d.png">'));
+    };
 };
 
+function appendIcon(array) {
+    $('#umbrellaDiv').append($('<img src="http://openweathermap.org/img/w/' + array[15] + '.png">'));
+}
 // function updateUmbrellaAlertDisplay();
 //this updates the condition icon and text alert display
 
@@ -125,32 +134,33 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var localStorageObject = window.localStorage;
+console.log(localStorageObject.toCity);
 var cityConnection = database.ref("/" + localStorageObject.toCity)
 
 // document.ready function for any print to screen function
 $(document).ready(function () {
 
-    
+
 
     //test harness for pushing data
     //always false data
-    //always defaults to AJAXArray
-    cityConnection.set({
-        lastUpdate: Date.now(),
-        temp: 71.35,
-        pressure: 1026,
-        humidity: 36,
-        speed: 4.7,
-        description: "broken clouds",
-        icon: "04d",
-        id: 803,
-        main: "Clouds",
-        clouds: 24,
-        sunset: 1553042478,
-    });
+    //always defaults to firebaseArray
+    // cityConnection.set({
+    //     lastUpdate: Date.now(),
+    //     temp: 71.35,
+    //     pressure: 1026,
+    //     humidity: 36,
+    //     speed: 4.7,
+    //     description: "broken clouds",
+    //     icon: "04d",
+    //     id: 803,
+    //     main: "Clouds",
+    //     clouds: 24,
+    //     sunset: 1553042478,
+    // });
 
     // always true data
-    //always defaults to firebaseArray
+    //always defaults to AjaxArray
     // cityConnection.set({
     //     lastUpdate: $.now() + (1000 * 60 * 10.5),
     //     temp: 71.35,
@@ -167,48 +177,56 @@ $(document).ready(function () {
 
     cityConnection.once("value", function (snapshot) {
         //firebase inspect city last updated timestamp compare with Date.now()+10minutes
-        
+        console.log(snapshot.val());
+
         // Log everything that's coming out of snapshot
         // console.log(snapshot.val());
         // console.log(snapshot.val().lastUpdate);
         // console.log($.now());
         // console.log(snapshot.val().lastUpdate > $.now() + (1000 * 60 * 10));
+        // console.log("firebase" + snapshot.val().lastUpdate);
+        // console.log("now"+$.now());
+        // console.log($.now() + (1000 * 60 * 10));
+        // console.log("lastUpdate is less than now+10");
+        // console.log(snapshot.val().lastUpdate < $.now() + (1000 * 60 * 10));
+        // console.log((1000 * 60 * 10));
 
-        if (snapshot.val().lastUpdate > $.now() + (1000 * 60 * 10)){
-        console.log("firebaseArray");
-        //if less than = use firebase data
-        var firebaseArray = [];
-        firebaseArray.push("Temperature");
-        firebaseArray.push(snapshot.val().temp+"'F");
-        firebaseArray.push("Bar");
-        firebaseArray.push(snapshot.val().pressure);
-        firebaseArray.push("Humidity");
-        firebaseArray.push(snapshot.val().humidity);
-        firebaseArray.push("Wind");
-        firebaseArray.push(snapshot.val().speed);
-        firebaseArray.push("Description");
-        firebaseArray.push(snapshot.val().description);
-        firebaseArray.push("Cloud Coverage");
-        firebaseArray.push(snapshot.val().clouds+"%");
-        firebaseArray.push("Sunset");
-        firebaseArray.push(snapshot.val().sunset);
-        firebaseArray.push("Icon");
-        firebaseArray.push(snapshot.val().icon);
-        firebaseArray.push("Id");
-        firebaseArray.push(snapshot.val().id);
-        firebaseArray.push("main");
-        firebaseArray.push(snapshot.val().main);
-        console.log(firebaseArray);
-        updatePrintDisplay(firebaseArray);
+        if (snapshot.val().lastUpdate < $.now() + (1000 * 60 * 10)) {
+            console.log("firebaseArray");
+            //if less than = use firebase data
+            var firebaseArray = [];
+            firebaseArray.push("Temperature");
+            firebaseArray.push(snapshot.val().temp + "'F");
+            firebaseArray.push("Bar");
+            firebaseArray.push(snapshot.val().pressure);
+            firebaseArray.push("Humidity");
+            firebaseArray.push(snapshot.val().humidity);
+            firebaseArray.push("Wind");
+            firebaseArray.push(snapshot.val().speed);
+            firebaseArray.push("Description");
+            firebaseArray.push(snapshot.val().description);
+            firebaseArray.push("Cloud Coverage");
+            firebaseArray.push(snapshot.val().clouds + "%");
+            firebaseArray.push("Sunset");
+            firebaseArray.push(snapshot.val().sunset);
+            firebaseArray.push("Icon");
+            firebaseArray.push(snapshot.val().icon);
+            firebaseArray.push("Id");
+            firebaseArray.push(snapshot.val().id);
+            firebaseArray.push("main");
+            firebaseArray.push(snapshot.val().main);
+            firebaseArray.push(snapshot.val().name);
+            console.log(firebaseArray);
+            updatePrintDisplay(firebaseArray);
 
-        compareWeatherId(firebaseArray);
+            compareWeatherId(firebaseArray);
 
 
         } else {
             console.log("AJAXArray");
             //if greater than = use Ajax call mixed with firebase data for today(); error handle for display to current data;
             // Ajax call to get data, then function calls printDisplay functions
-          
+
             // Storing our query string for OpenWeatherMap API
             // This is our API key
             var APIKey = "f811d6890d096d171ee1586e5b3264b4";
@@ -229,12 +247,12 @@ $(document).ready(function () {
                     // Saving the response object (and console log for object check)
                     var newResponse = response;
                     console.log(response);
-                  
+
 
                     //create var object of data = location.data + weather.data ...etc
                     var ajaxResponseArray = [];
                     ajaxResponseArray.push("Temperature");
-                    ajaxResponseArray.push(newResponse.main.temp+ "'F");
+                    ajaxResponseArray.push(newResponse.main.temp + "'F");
                     ajaxResponseArray.push("Bar");
                     ajaxResponseArray.push(newResponse.main.pressure);
                     ajaxResponseArray.push("Humidity");
@@ -244,7 +262,7 @@ $(document).ready(function () {
                     ajaxResponseArray.push("Description");
                     ajaxResponseArray.push(newResponse.weather[0].description);
                     ajaxResponseArray.push("Cloud Coverage");
-                    ajaxResponseArray.push(newResponse.clouds.all+"%");
+                    ajaxResponseArray.push(newResponse.clouds.all + "%");
                     ajaxResponseArray.push("Sunset");
                     ajaxResponseArray.push(newResponse.sys.sunset);
                     ajaxResponseArray.push("Icon");
@@ -253,14 +271,15 @@ $(document).ready(function () {
                     ajaxResponseArray.push(newResponse.weather[0].id);
                     ajaxResponseArray.push("main");
                     ajaxResponseArray.push(newResponse.weather[0].main);
+                    ajaxResponseArray.push(newResponse.name);
                     console.log(ajaxResponseArray);
-               
+
 
                     //=======================THEN YOU NEED TO SAVE DATA TO FIREBASE=========
                     console.log("AJax sent to Firebase");
 
                     updateFirebase(newResponse);
-                
+
                     console.log("after firebase");
 
                     updatePrintDisplay(ajaxResponseArray);
@@ -288,7 +307,7 @@ $(document).ready(function () {
 
 
 
-        
+
         //call turnDegreesIntoCardinalDirection();
         //add returned value to object of data
 
@@ -367,4 +386,4 @@ $(document).ready(function () {
         // ==============================END of second AJAX call - forecast =============================================================
 
 
-        
+
