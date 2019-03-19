@@ -1,55 +1,110 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NoLate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="submit.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+<!-- FUTURE HEADER/ NAV BAR -->
+    <Header id="headerContainer">
 
-    <script>
-//fake data to LocalStorage
-    localStorage.setItem('name','Robert Paulson');
-    localStorage.setItem('fromAddress','2405 Robert Dedman Dr');
-    localStorage.setItem('fromCity','Austin');
-    localStorage.setItem('fromState','TX');
-    localStorage.setItem('fromZip','78712');
-    localStorage.setItem('fromLocationString', '2405 Robert Dedman Dr Austin, TX 78712')
-    localStorage.setItem('toAddress','11411 Research Blvd');
-    localStorage.setItem('toCity','Austin');
-    localStorage.setItem('toState','TX');
-    localStorage.setItem('toZip','78759');
-    localStorage.setItem('toLocationString','11411 Research Blvd Austin, TX 78759');
 
-    localStorage.setItem('requiredArrivalTime','09:00 AM');
-    localStorage.setItem('morningRoutineTime','20');
+      <div id="headerContent">
 
-//sets a fake cookie
-    document.cookie = "commuteUser=4444444444444444; expires=01 Jan 1969 12:00:00 UTC";
-    
-//sets localStorage and cookies to an inspectable object
-   var localStorageObject = window.localStorage;
-   var cookieObject = document.cookie;
 
-//prints localStorage objects for this solution
-   console.log(localStorageObject.name);
-   console.log(localStorageObject.fromAddress);
-   console.log(localStorageObject.fromCity);
-   console.log(localStorageObject.fromState);
-   console.log(localStorageObject.fromZip);
-   console.log(localStorageObject.fromLocationString);
-   console.log(localStorageObject.toAddress);
-   console.log(localStorageObject.toCity);
-   console.log(localStorageObject.toState);
-   console.log(localStorageObject.toZip);
-   console.log(localStorageObject.toLocationString);
-   console.log(localStorage.requiredArrivalTime);
-   console.log(localStorageObject.morningRoutineTime); 
 
-//print Cookie query response to console
-console.log(cookieObject.indexOf('commuteUser'));
-    </script>
-</body>
+      </div>
+
+    </header>
+<!--INPUT FORM -->
+  <form action="" method = "" id="inputForm">
+    <div id="info">
+    <label for="nameInput">Name</label> <br />
+    <input type="text" id="nameInput">
+    </div>
+    <div class="fromInputDiv">
+      <label>
+        <p>From:</p> <br />
+        <p>Address:</p>
+          <input type="text" class="fromInput"id="addressFromInput">
+      </label>
+      <label>
+        <br /> <p>City:<p>
+          <input type="text" class="fromInput"id="cityFromInput">
+      </label>
+      <label>
+        <br /> <p>State:</p>
+          <input type="list" class="fromInput" id="stateFromInput">
+      </label>
+      <label>
+        <br /> <p>Zip:</p>
+          <input type="number" class="fromInput" id="zipFromInput">
+      </label>
+
+    </div>
+    <div id= "toInputDiv">
+    <label> <br />
+      To: <br />
+      <br>Address: <br />
+        <input type="text" class="toInput"id="addressToInput">
+    </label>
+    <label>
+      <br /> <p>City:</p>
+        <input type="text" class="toInput"id="cityToInput">
+    </label>
+    <label>
+      <br /> <p>State:</p>
+        <input type="list" class="toInput" id="stateToInput">
+    </label>
+    <label>
+      <br /> <p>Zip:</p>
+        <input type="number" class="toInput" id="zipToInput">
+    </label>
+    </div>
+    <div id="time"> <br />
+        <p>Required Arrival Time:</p>
+        <input type="time" id="requiredArrivalTime">
+        <p>Morning Routine Time:</p>
+        <input type="time" id="morningRoutineTime">
+
+        </div>
+    <div id="reset_submit">
+        <br />
+        <input type="submit" id="submitButton" value="Submit">
+        <input type="reset" id="formReset" value="Reset">
+    </div>
+
+    <br /> <br />
+<!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
+    <div id="bodyWrap">
+      <div class="container1">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>Text</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-md-4">
+              <h1>Text</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            <div class="col-md-4">
+              <h1>Text</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-md-12">
+            <h1>text</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </body>
 </html>
