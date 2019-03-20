@@ -1,5 +1,4 @@
-$(function(){
-    var config = {
+ var config = {
         apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
         authDomain: "firstteamproject-16be1.firebaseapp.com",
         databaseURL: "https://firstteamproject-16be1.firebaseio.com",
@@ -10,6 +9,9 @@ $(function(){
 
     firebase.initializeApp(config);
     var database = firebase.database();
+    
+    $(function(){
+   
     var connection=database.ref("/userdata");
 
 

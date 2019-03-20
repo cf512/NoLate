@@ -9,8 +9,7 @@ window.chartColors = {
 };
 var colorNames = Object.keys(window.chartColors);
 var MONTHS = ['1st day', '2nd day', '3rd day', '4th day', '5th day'];
-//YOU COMMENTED THIS OUT TO STOP THE CONSOLE ERROR
-// var color = Chart.helpers.color;
+var color = Chart.helpers.color;
 var horizontalBarChartData = {
     labels: ['1st day', '2nd day', '3rd day', '4th day', '5th day'],
     datasets: [{
@@ -185,7 +184,7 @@ window.onload = function () {
 
 
 
-        var ctx = document.getElementById('canvas');
+        var ctx = document.getElementById('canvas')
         // .getContext('2d');
         window.myHorizontalBar = new Chart(ctx, {
             type: 'horizontalBar',
