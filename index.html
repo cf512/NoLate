@@ -6,8 +6,8 @@
     <title>NoLate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="submit.js"></script>
     <script src="testHarness.js"></script>
+    <script src="javascript.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
@@ -72,7 +72,7 @@
         <p>Required Arrival Time:</p>
         <input type="time" id="requiredArrivalTime">
         <p>Morning Routine Time:</p>
-        <input type="time" id="morningRoutineTime">
+        <input type="number" id="morningRoutineTime">
 
         </div>
     <div id="reset_submit">
@@ -86,11 +86,11 @@
     <div id="bodyWrap">
       <div class="container1">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" id="parentDiv">
             <h1>Text</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" id="umbrellaDiv">
               <h1>Text</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               </div>
