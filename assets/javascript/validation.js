@@ -22,7 +22,7 @@ $(function() {
 
     $("input").on("focus", function(e){
         document.getElementById("submitButton").disabled=true;
-        if(checkVal($("#nameInput"))|| checkVal($("#stateFromInput")) || checkVal($("#stateToInput")) || checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
+        if(checkVal($("#nameInput"))|| checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
             document.getElementById("submitButton").disabled=true
         } else {
             document.getElementById("submitButton").disabled=false
@@ -30,7 +30,7 @@ $(function() {
     });
 
     $("input").on("change", function(e){
-        if(checkVal($("#nameInput"))|| checkVal($("#stateFromInput")) || checkVal($("#stateToInput")) || checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
+        if(checkVal($("#nameInput")) || checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
             document.getElementById("submitButton").disabled=true
         } else {
             document.getElementById("submitButton").disabled=false
