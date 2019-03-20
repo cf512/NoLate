@@ -56,15 +56,15 @@ $(function(){
 
         localStorage.setItem("transport",$("#transport").val());
         localStorage.setItem("fromAddress",$("#addressFromInput").val()); 
-        localStorage.setItem("fromCity",$("#cityFromInput").val()); 
-        localStorage.setItem("fromState",$("#stateFromInput").val()); 
-        localStorage.setItem("fromZip",$("#zipFromInput").val()); 
+        // localStorage.setItem("fromCity",$("#cityFromInput").val()); 
+        // localStorage.setItem("fromState",$("#stateFromInput").val()); 
+        // localStorage.setItem("fromZip",$("#zipFromInput").val()); 
      //   localStorage.setItem("calculatedFromLocation",$("#addressFromInput").val()+" "+$("#cityFromInput").val()+" "+$("#stateFromInput").val()+" "+$("#zipFromInput").val()); 
 
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
-        localStorage.setItem("toCity",$("#cityToInput").val()); 
-        localStorage.setItem("toState",$("#stateToInput").val()); 
-        localStorage.setItem("toZip",$("#zipToInput").val()); 
+        // localStorage.setItem("toCity",$("#cityToInput").val()); 
+        // localStorage.setItem("toState",$("#stateToInput").val()); 
+        // localStorage.setItem("toZip",$("#zipToInput").val()); 
      //   localStorage.setItem("calculatedToLocation",$("#addressToInput").val()+" "+$("#cityToInput").val()+" "+$("#stateToInput").val()+" "+$("#zipToInput").val()); 
 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
