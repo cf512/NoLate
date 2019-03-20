@@ -38,6 +38,8 @@ $(function() {
                     $("#googleMapDump p").append("<br>To : "+response.routes[0].legs[0].end_address);
                     $("#googleMapDump p").append("<br>total distance : "+response.routes[0].legs[0].distance.text);
                     $("#googleMapDump p").append("<br>total time : "+response.routes[0].legs[0].duration.text);
+                    localStorage.setItem('transitTime', response.routes[0].legs[0].duration.value);
+                    
                 } else {
                     $("#error").append("Unable to retrieve your route<br />");
                 }  
@@ -80,5 +82,6 @@ $(function() {
     $("#submitButton").on("click",function(event){
         event.preventDefault();
         calculateRoute($("#addressFromInput").val(), $("#addressToInput").val());
+        updateAlarmClock();
     });
 });
