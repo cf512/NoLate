@@ -67,8 +67,8 @@ $(function(){
         localStorage.setItem("toZip",$("#zipToInput").val()); 
      //   localStorage.setItem("calculatedToLocation",$("#addressToInput").val()+" "+$("#cityToInput").val()+" "+$("#stateToInput").val()+" "+$("#zipToInput").val()); 
 
-        localStorage.setItem("Required Arrival Time", $("#requiredArrivalTime").val());
-        localStorage.setItem("Morning Routine Time", $("#morningRoutineTime").val());
+        localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
+        localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
     });
     
     // Form = {id = inputForm}
