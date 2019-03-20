@@ -1,0 +1,15 @@
+body {
+    margin: 10px 25px 10px 25px;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+#addressToInput {
+    width: 400px;
+}
+
+#addressFromInput {
+    width: 400px;
+}
