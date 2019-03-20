@@ -184,7 +184,7 @@ window.onload = function () {
 
 
 
-        var ctx = document.getElementById('canvas');
+        var ctx = document.getElementById('canvas')
         // .getContext('2d');
         window.myHorizontalBar = new Chart(ctx, {
             type: 'horizontalBar',

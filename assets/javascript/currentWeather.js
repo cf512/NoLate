@@ -34,17 +34,17 @@
 
 
 // initializing firebase outside a function
-var config = {
-    apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
-    authDomain: "firstteamproject-16be1.firebaseapp.com",
-    databaseURL: "https://firstteamproject-16be1.firebaseio.com",
-    projectId: "firstteamproject-16be1",
-    storageBucket: "firstteamproject-16be1.appspot.com",
-    messagingSenderId: "546682156707"
-};
+// var config = {
+//     apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
+//     authDomain: "firstteamproject-16be1.firebaseapp.com",
+//     databaseURL: "https://firstteamproject-16be1.firebaseio.com",
+//     projectId: "firstteamproject-16be1",
+//     storageBucket: "firstteamproject-16be1.appspot.com",
+//     messagingSenderId: "546682156707"
+// };
 
-firebase.initializeApp(config);
-var database = firebase.database();
+// firebase.initializeApp(config);
+// var database = firebase.database();
 var localStorageObject = window.localStorage;
 var cityConnection = "";
 
@@ -265,26 +265,7 @@ $(document).ready(function () {
         //on submit of form
         $("#submitButton").on("click", function (event) {
             event.preventDefault();
-            localStorage.clear();
-
-            var con = connection.push($("#nameInput").val());
-            setCookie("commuteUser=" + con.key, con.key, 1);
-
-            //set everything for localStorage of User
-            localStorage.setItem("fromAddress", $("#addressFromInput").val());
-            localStorage.setItem("fromCity", $("#cityFromInput").val());
-            localStorage.setItem("fromState", $("#stateFromInput").val());
-            localStorage.setItem("fromZip", $("#zipFromInput").val());
-            localStorage.setItem("calculatedFromLocation", $("#addressFromInput").val() + " " + $("#cityFromInput").val() + " " + $("#stateFromInput").val() + " " + $("#zipFromInput").val());
-
-            localStorage.setItem("toAddress", $("#addressToInput").val());
-            localStorage.setItem("toCity", $("#cityToInput").val());
-            localStorage.setItem("toState", $("#stateToInput").val());
-            localStorage.setItem("toZip", $("#zipToInput").val());
-            localStorage.setItem("calculatedToLocation", $("#addressToInput").val() + " " + $("#cityToInput").val() + " " + $("#stateToInput").val() + " " + $("#zipToInput").val());
-
-            localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
-            localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
+            
 
             //added an update to weather on submit
             cityConnection = database.ref("/" + localStorageObject.toCity);

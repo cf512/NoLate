@@ -5,7 +5,7 @@ function updateAlarmClock(){
     
 
     var transitTimeConvertedMinutesTotal = Math.floor(localStorageObject.transitTime/60);
-    var transitTimeConvertedHours = Math.floor(transitTimeConvertedMinutesTotal/ 60);
+    var transitTimeConvertedHours = Math.floor(transitTimeConvertedMinutesTotal/60);
     var transitTimeConvertedMinutesAfterHours= Math.floor(transitTimeConvertedMinutesTotal%60);
     console.log(localStorageObject.transitTime);
     console.log(transitTimeConvertedMinutesTotal);
@@ -20,14 +20,18 @@ function updateAlarmClock(){
     }
     else{
         transitHoursOutput = "";
-        transitMinutesOutput = transitTimeConvertedMinutesTotal+ " minutes"
+        transitMinutesOutput = transitTimeConvertedMinutesTotal+ " minutes";
     }
+    console.log("morning routine time: "+parseInt(localStorageObject.morningRoutineTime));
+    var totalTimeToDeductMinutesTotal = transitTimeConvertedMinutesTotal+parseInt(localStorageObject.morningRoutineTime);
+    console.log(totalTimeToDeductMinutesTotal);
+    var totalTimeToDeductHours = Math.floor(totalTimeToDeductMinutesTotal/60);
+    console.log(totalTimeToDeductHours);
+    var totalTimeToDeductMinutesAfterHours = Math.floor(totalTimeToDeductMinutesTotal%60);
 
-    var totalTimeToDeductMinutesTotal = transitTimeConvertedMinutesTotal+localStorageObject.morningRoutineTime
-    var totalTimeToDeductHours = Math.floor(totalTimeToDeductMinutesTotal/ 60);
-    var totalTimeToDeductMinutesAfterHours = Math.floor(totalTimeToDeductHours);
     var totalHoursOutput;
     var totalMinutesOutput;
+
     if(totalTimeToDeductHours > 0){
         totalHoursOutput = totalTimeToDeductHours+" hours, and ";
         totalMinutesOutput = totalTimeToDeductMinutesAfterHours+ " minutes";
@@ -42,8 +46,8 @@ function updateAlarmClock(){
     var newDiv = $('<div>');
     newDiv.append('<p> Arrival Time:'+localStorageObject.requiredArrivalTime+ '</p>');
     newDiv.append('<p> Transit Time:'+transitHoursOutput + transitMinutesOutput+ '</p>');
-    newDiv.append('<p> Morning Routine Total Time'+localStorageObject.morningRoutineTime+ '</p>');   
-    newDiv.append('<p> Total Time to Deduct'+totalHoursOutput+totalMinutesOutput+ '</p>');   
+    newDiv.append('<p> Morning Routine Total Time: '+localStorageObject.morningRoutineTime+ '</p>');   
+    newDiv.append('<p> Total Time to Deduct: '+totalHoursOutput+totalMinutesOutput+ '</p>');   
     $('#commuteDataDump').html(newDiv); 
 };
 
