@@ -4,110 +4,134 @@
   <head>
     <meta charset="utf-8">
     <title>NoLate</title>
+    
+    <!-- <script src="testHarness.js"></script> -->
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <!-- <script src="testHarness.js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_VMgrd_Qmg5Zn0bXcLZbxjbRzw6tjeVM&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="assets/javascript/autocomplete.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="javascript.js"></script>
     <script src="OpenWeather.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <script src="assets/javascript/submit.js"></script> -->
+    <script src="assets/javascript/map.js"></script>
+    <script src="assets/javascript/validation.js"></script>
+    
   </head>
+  <style type="text/css">
+    #map {
+      width: 500px;
+      height: 400px;
+      margin-top: 10px;
+    }
+  </style>
+
   <body>
-<!-- FUTURE HEADER/ NAV BAR -->
-    <Header id="headerContainer">
+<!-- CURRENT FORM********************************************************************** -->
 
-
-      <div id="headerContent">
-
-
-
-      </div>
-
-    </header>
-<!--INPUT FORM -->
-  <form action="" method = "" id="inputForm">
-    <div id="info">
-    <label for="nameInput">Name</label> <br />
-    <input type="text" id="nameInput">
-    </div>
-    <div class="fromInputDiv">
-      <label>
-        <p>From:</p> <br />
-        <p>Address:</p>
-          <input type="text" class="fromInput"id="addressFromInput">
-      </label>
-      <label>
-        <br /> <p>City:<p>
-          <input type="text" class="fromInput"id="cityFromInput">
-      </label>
-      <label>
-        <br /> <p>State:</p>
-          <input type="list" class="fromInput" id="stateFromInput">
-      </label>
-      <label>
-        <br /> <p>Zip:</p>
-          <input type="number" class="fromInput" id="zipFromInput">
-      </label>
-
-    </div>
-    <div id= "toInputDiv">
-    <label> <br />
-      To: <br />
-      <br>Address: <br />
-        <input type="text" class="toInput"id="addressToInput">
+<form action="" method = "" id="inputForm">
+  <div id="info">
+  <label for="nameInput">Name</label> <br />
+  <input type="text" id="nameInput">
+  </div>
+  <div class="fromInputDiv">
+    <label>
+      <p>From:</p> <br />
+      <p>Address:</p>
+        <input type="text" class="fromInput" id="addressFromInput">
     </label>
     <label>
-      <br /> <p>City:</p>
-        <input type="text" class="toInput"id="cityToInput">
+      <br /> <p>City:<p>
+        <input type="text" class="fromInput" id="cityFromInput" disabled ="true">
     </label>
     <label>
       <br /> <p>State:</p>
-        <input type="list" class="toInput" id="stateToInput">
+        <input list="fromStateId" class="fromInput" id="stateFromInput" disabled ="true"> 
     </label>
     <label>
       <br /> <p>Zip:</p>
-        <input type="number" class="toInput" id="zipToInput">
+        <input type="number" class="fromInput" id="zipFromInput" disabled ="true">
     </label>
-    </div>
-    <div id="time"> <br />
-        <p>Required Arrival Time:</p>
-        <input type="time" id="requiredArrivalTime">
-        <p>Morning Routine Time:</p>
-        <input type="number" id="morningRoutineTime">
+  </div>
+  <div id= "toInputDiv">
+  <label> <br />
+    To: <br />
+    <br>Address: <br />
+      <input type="text" class="toInput"id="addressToInput">
+  </label>
+  <label>
+    <br /> <p>City:</p>
+      <input type="text" class="toInput"id="cityToInput" disabled ="true">
+  </label>
+  <label>
+    <br /> <p>State:</p>
+      <input list="toStateId" class="toInput" id="stateToInput" disabled ="true">
+  <label>
+    <br /> <p>Zip:</p>
+      <input type="number" class="toInput" id="zipToInput" disabled ="true">
+  </label>
+  </div>
+  <div id="time"> <br />
+      <p>Required Arrival Time:</p>
+      <input type="time" id="requiredArrivalTime">
+      <p>Morning Routine Time:</p>
+      <input type="time" id="morningRoutineTime">
 
+      </div>
+      <label>
+          <p>Transportation Method:</p>
+          <input list="transportationMethod" class="transpo" id="transport">
+          <datalist id="transportationMethod">
+            <option value="Driving">Driving</option>
+            <option value="Transit">Transit</option>
+            <option value="Bicycling">Bicycling</option>
+            <option value="Walking">Walking</option>
+        </label>
+  <div id="reset_submit">
+      <br />
+      <input type="submit" id="submitButton" value="Submit">
+      <input type="reset" id="formReset" value="Reset">
+  </div>
+</form>
+
+
+
+<div id="bodyWrap">
+  <div class="gridContainer">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4" id="commuteDataDump">
+        <h1 id="duration"></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-    <div id="reset_submit">
-        <br />
-        <input type="submit" id="submitButton" value="Submit">
-        <input type="reset" id="formReset" value="Reset">
-    </div>
-
-    <br /> <br />
-<!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
-    <div id="bodyWrap">
-      <div class="container1">
+        <div class="col-sm-4 col-md-4 col-lg-4" id="googleMapDump">
+          <div id="map"></div>
+          <img id="routeMap" src="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" id="morningRoutineList">
+          <h1>Text</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
         <div class="row">
-          <div class="col-md-4" id="parentDiv">
-            <h1>Text</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-md-4" id="umbrellaDiv">
-              <h1>Text</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-            <div class="col-md-4">
-              <h1>Text</h1>
-              <canvas id="canvas"></canvas>
-              </div>
-            <div class="col-md-12">
-            <h1>text</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="col-sm-4 col-md-4 col-lg-4" id="weatherDataDump">
+          <img id="weatherChart" src="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4" id="umbrellaAlert">
+          <img id="umbrellaAlert" src="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4" id="morningToDo">
+          <h1>Text</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </div>
+  </div>
 
-
-    </form>
   </body>
 </html>
