@@ -74,7 +74,6 @@ function updateWeatherDataFromLocal(snapshot) {
     //firebase inspect city last updated timestamp compare with Date.now()+10minutes
     //included the temp check in case its just a lastUpdate time stamp 
     if ((snapshot.hasChild("temp")) && (snapshot.hasChild("lastUpdate")) && (snapshot.val().lastUpdate > ($.now()-(10 * 60 * 1000)) ) ){
-        console.log("firebaseArray");
         //if less than use firebase data
         //this assumes that a full object of data exists in firebase
         var firebaseArray = [];
@@ -107,7 +106,6 @@ function updateWeatherDataFromLocal(snapshot) {
 
 
     } else {
-        console.log("AJAXArray");
         //if greater than = use Ajax call mixed with firebase data for today(); error handle for display to current data;
         // Ajax call to get data, then function calls printDisplay functions
 
@@ -154,8 +152,7 @@ function updateWeatherDataFromLocal(snapshot) {
                 ajaxResponseArray.push("main");
                 ajaxResponseArray.push(newResponse.weather[0].main);
                 ajaxResponseArray.push(newResponse.name);
-                console.log(ajaxResponseArray);
-                console.log("ajaxResponseArray");
+         
 
 
                 //=======================THEN YOU NEED TO SAVE DATA TO FIREBASE=========
@@ -209,8 +206,7 @@ function updateFirebase(newResponse) {
         name: newResponse.name
     });
     cityConnection.once("value", function (snapshot) {
-        console.log(snapshot.val());
-        console.log("above was updateFirebase cityConnection.val()")
+       
     });
 
 };
@@ -268,27 +264,27 @@ $(document).ready(function () {
 
         //on submit of form
         $("#submitButton").on("click", function (event) {
-            event.preventDefault();
-            localStorage.clear();
+            // event.preventDefault();
+            // localStorage.clear();
 
-            var con = connection.push($("#nameInput").val());
-            setCookie("commuteUser=" + con.key, con.key, 1);
+            // var con = connection.push($("#nameInput").val());
+            // setCookie("commuteUser=" + con.key, con.key, 1);
 
-            //set everything for localStorage of User
-            localStorage.setItem("fromAddress", $("#addressFromInput").val());
-            localStorage.setItem("fromCity", $("#cityFromInput").val());
-            localStorage.setItem("fromState", $("#stateFromInput").val());
-            localStorage.setItem("fromZip", $("#zipFromInput").val());
-            localStorage.setItem("calculatedFromLocation", $("#addressFromInput").val() + " " + $("#cityFromInput").val() + " " + $("#stateFromInput").val() + " " + $("#zipFromInput").val());
+            // //set everything for localStorage of User
+            // localStorage.setItem("fromAddress", $("#addressFromInput").val());
+            // localStorage.setItem("fromCity", $("#cityFromInput").val());
+            // localStorage.setItem("fromState", $("#stateFromInput").val());
+            // localStorage.setItem("fromZip", $("#zipFromInput").val());
+            // localStorage.setItem("calculatedFromLocation", $("#addressFromInput").val() + " " + $("#cityFromInput").val() + " " + $("#stateFromInput").val() + " " + $("#zipFromInput").val());
 
-            localStorage.setItem("toAddress", $("#addressToInput").val());
-            localStorage.setItem("toCity", $("#cityToInput").val());
-            localStorage.setItem("toState", $("#stateToInput").val());
-            localStorage.setItem("toZip", $("#zipToInput").val());
-            localStorage.setItem("calculatedToLocation", $("#addressToInput").val() + " " + $("#cityToInput").val() + " " + $("#stateToInput").val() + " " + $("#zipToInput").val());
+            // localStorage.setItem("toAddress", $("#addressToInput").val());
+            // localStorage.setItem("toCity", $("#cityToInput").val());
+            // localStorage.setItem("toState", $("#stateToInput").val());
+            // localStorage.setItem("toZip", $("#zipToInput").val());
+            // localStorage.setItem("calculatedToLocation", $("#addressToInput").val() + " " + $("#cityToInput").val() + " " + $("#stateToInput").val() + " " + $("#zipToInput").val());
 
-            localStorage.setItem("Required Arrival Time", $("#requiredArrivalTime").val());
-            localStorage.setItem("Morning Routine Time", $("#morningRoutineTime").val());
+            // localStorage.setItem("Required Arrival Time", $("#requiredArrivalTime").val());
+            // localStorage.setItem("Morning Routine Time", $("#morningRoutineTime").val());
 
             //added an update to weather on submit
             cityConnection = database.ref("/" + localStorageObject.toCity);
@@ -307,8 +303,6 @@ $(document).ready(function () {
     //this pulls from the localStorage toCity from onload
     if(localStorageObject.getItem("toCity")!==null){ 
         cityConnection = database.ref("/"+localStorageObject.toCity);
-        console.log(localStorageObject.toCity);
-        console.log("above was localstorage.toCity right before initial connection output which should be same as initial value")
         cityConnection.once("value", function (snapshot) {
             updateWeatherDataFromLocal(snapshot);
         });
