@@ -64,6 +64,9 @@
      //   localStorage.setItem("calculatedFromLocation",$("#addressFromInput").val()+" "+$("#cityFromInput").val()+" "+$("#stateFromInput").val()+" "+$("#zipFromInput").val()); 
 
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
+        var arrayFromAddress = $("#addressToInput").val().split(",");
+        localStorage.setItem("toCity", arrayFromAddress[arrayFromAddress.length-3].trim() );
+        console.log(arrayFromAddress[arrayFromAddress.length-3].trim());
         // localStorage.setItem("toCity",$("#cityToInput").val()); 
         // localStorage.setItem("toState",$("#stateToInput").val()); 
         // localStorage.setItem("toZip",$("#zipToInput").val()); 
