@@ -188,7 +188,7 @@ function updatePrintDisplay(array) {
         //iterating twice so that I am using array like a dictionary
         i++;
     };
-    $('#parentDiv').html(newCollection);
+    $('#weatherDataDump').html(newCollection);
 };
 
 //this is for a save data from AJAX to firebase collection
@@ -218,27 +218,27 @@ function updateFirebase(newResponse) {
 //this checks the weatherId against a list
 function compareWeatherId(array) {
     if (200 < array[17] && array[17] < 299) {
-        $('#umbrellaDiv').text("Thunderstorms");
+        $('#umbrellaAlert').text("Thunderstorms");
         appendIcon(array);
     } else if (300 < array[17] && array[17] < 399) {
-        $('#umbrellaDiv').text("Drizzle");
+        $('#umbrellaAlert').text("Drizzle");
         appendIcon(array);
     } else if (500 < array[17] && array[17] < 599) {
-        $('#umbrellaDiv').text("It gone rain");
+        $('#umbrellaAlert').text("It gone rain");
         appendIcon(array);
     } else if (600 < array[17] && array[17] < 699) {
-        $('#umbrellaDiv').text("Snow");
+        $('#umbrellaAlert').text("Snow");
         appendIcon(array);
     } else {
-        $('#umbrellaDiv').text("Its going to be a wonderful day");
-        $('#umbrellaDiv').append($('<img src="http://openweathermap.org/img/w/02d.png">'));
+        $('#umbrellaAlert').text("Its going to be a wonderful day");
+        $('#umbrellaAlert').append($('<img src="http://openweathermap.org/img/w/02d.png">'));
     };
 };
 
 
 //this updates the condition icon and text alert display
 function appendIcon(array) {
-    $('#umbrellaDiv').append($('<img src="http://openweathermap.org/img/w/' + array[15] + '.png">'));
+    $('#umbrellaAlert').append($('<img src="http://openweathermap.org/img/w/' + array[15] + '.png">'));
 }
 
 // minseoks setCookie function as a global function called from within the .ready 
