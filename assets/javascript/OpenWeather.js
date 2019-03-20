@@ -9,7 +9,8 @@ window.chartColors = {
 };
 var colorNames = Object.keys(window.chartColors);
 var MONTHS = ['1st day', '2nd day', '3rd day', '4th day', '5th day'];
-var color = Chart.helpers.color;
+//YOU COMMENTED THIS OUT TO STOP THE CONSOLE ERROR
+// var color = Chart.helpers.color;
 var horizontalBarChartData = {
     labels: ['1st day', '2nd day', '3rd day', '4th day', '5th day'],
     datasets: [{
