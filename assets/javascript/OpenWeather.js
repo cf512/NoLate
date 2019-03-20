@@ -125,10 +125,9 @@ window.onload = function () {
         method: "GET"
     }).then(function (response) {
         // After the data from the AJAX request comes back
-        // Saving the response object (and console log for object check)
+        // Saving the response object
         var newResponse = response;
-        console.log(response);
-        console.log(newResponse);
+       
 
 
         //=======================================================
@@ -185,7 +184,8 @@ window.onload = function () {
 
 
 
-        var ctx = document.getElementById('canvas').getContext('2d');
+        var ctx = document.getElementById('canvas');
+        // .getContext('2d');
         window.myHorizontalBar = new Chart(ctx, {
             type: 'horizontalBar',
             data: horizontalBarChartData,
