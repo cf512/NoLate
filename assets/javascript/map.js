@@ -10,6 +10,7 @@ $(function() {
         var directionsService = new google.maps.DirectionsService();
         var date = new Date();
         date=date.toDateString()+" "+localStorage.getItem("Morning Routine Time");
+
         date=moment(date).add(7, 'days')["_d"];
        
         var directionsRequest = {
@@ -37,6 +38,7 @@ $(function() {
                     $("#googleMapDump p").append("<br>To : "+response.routes[0].legs[0].end_address);
                     $("#googleMapDump p").append("<br>Total distance : "+response.routes[0].legs[0].distance.text);
                     $("#googleMapDump p").append("<br>Total time : "+response.routes[0].legs[0].duration.text);
+
                 } else {
                     $("#error").append("Unable to retrieve your route<br />");
                 }  
@@ -52,5 +54,6 @@ $(function() {
     $("#submitButton").on("click",function(event){
         event.preventDefault();
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
+
     });
 });

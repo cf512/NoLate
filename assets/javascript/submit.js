@@ -1,5 +1,4 @@
 $(function(){
-
     var config = {
         apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
         authDomain: "firstteamproject-16be1.firebaseapp.com",
@@ -50,7 +49,6 @@ $(function(){
 
     $("#submitButton").on("click",function(event){
         event.preventDefault();
-        localStorage.clear();
         localStorage.setItem("name",$("#nameInput").val()); 
         var con=connection.push($("#nameInput").val());
         setCookie("commuteUser="+con.key,con.key,1);
