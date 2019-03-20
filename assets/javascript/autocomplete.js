@@ -19,13 +19,13 @@ function fillInAddress1() {
         var addressType = place1.address_components[i].types[0]; 
         var val = place1.address_components[i][componentForm[addressType]];
         if(addressType=="locality") {
-            document.getElementById("cityFromInput").value = val;
+            $("#cityFromInput").val(val);
         }
         if(addressType=="administrative_area_level_1") {
-            document.getElementById("stateFromInput").value = val;
+            $("#stateFromInput").val(val);
         }
         if(addressType=="postal_code") {
-            document.getElementById("zipFromInput").value = val;
+            $("#zipFromInput").val(val);
         }
     }
 }
@@ -36,13 +36,13 @@ function fillInAddress2() {
         var addressType = place2.address_components[i].types[0]; 
         var val = place2.address_components[i][componentForm[addressType]];
         if(addressType=="locality") {
-            document.getElementById("cityToInput").value = val;
+            $("#cityToInput").val(val);
         }
         if(addressType=="administrative_area_level_1") {
-            document.getElementById("stateToInput").value = val;
+            $("#stateToInput").val(val);
         }
         if(addressType=="postal_code") {
-            document.getElementById("zipToInput").value = val;
+            $("#zipToInput").val(val);
         }
     }
 }
