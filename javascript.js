@@ -46,7 +46,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var localStorageObject = window.localStorage;
-var cityConnection = database.ref("/" + localStorageObject.toCity)
+var cityConnection = "";
 
 
 
@@ -304,11 +304,13 @@ $(document).ready(function () {
 // this is the initial weather data load
 
     // NEED TO DO A COOKIE CHECK ON LOAD TO EVEN RUN THE LOAD IN THE FIRST PLACE
-           //this pulls from the localStorage toCity from onload
-           console.log(localStorageObject.toCity);
-           console.log("above was localstorage.toCity right before initial connection output which should be same as initial value")
+    //this pulls from the localStorage toCity from onload
+    if(localStorageObject.getItem("toCity")!==null){ 
+        cityConnection = database.ref("/"+localStorageObject.toCity);
+        console.log(localStorageObject.toCity);
+        console.log("above was localstorage.toCity right before initial connection output which should be same as initial value")
         cityConnection.once("value", function (snapshot) {
             updateWeatherDataFromLocal(snapshot);
         });
-    
+    };    
 });
