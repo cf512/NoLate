@@ -33,7 +33,7 @@
 // ===================end test harness=====================
 
 
-// me initializing firebase outside a function
+// initializing firebase outside a function
 var config = {
     apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
     authDomain: "firstteamproject-16be1.firebaseapp.com",
@@ -46,7 +46,6 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var localStorageObject = window.localStorage;
-console.log(localStorageObject.toCity);
 var cityConnection = database.ref("/" + localStorageObject.toCity)
 
 
@@ -55,22 +54,15 @@ var cityConnection = database.ref("/" + localStorageObject.toCity)
 
 
 
+// ==============start of psuedocode comments, as if I had not done any development above===========================
+// ===============================================================================================================
 
 
 
-
-
-
-
-
-
-
-
-
-
-// ==============start of psuedocode comments, as if I had not done any development above
-// ==============================================================
 //global functions
+
+
+
 
 //made into a function so I can call it both on load, and button click
 //this contains:
@@ -107,7 +99,7 @@ function updateWeatherDataFromLocal(snapshot) {
         firebaseArray.push("main");
         firebaseArray.push(snapshot.val().main);
         firebaseArray.push(snapshot.val().name);
-        console.log(firebaseArray);
+
         updatePrintDisplay(firebaseArray);
 
         compareWeatherId(firebaseArray);
@@ -115,7 +107,6 @@ function updateWeatherDataFromLocal(snapshot) {
 
 
     } else {
-        // console.log(snapshot.val());
         console.log("AJAXArray");
         //if greater than = use Ajax call mixed with firebase data for today(); error handle for display to current data;
         // Ajax call to get data, then function calls printDisplay functions
@@ -137,10 +128,8 @@ function updateWeatherDataFromLocal(snapshot) {
             // After the data from the AJAX request comes back
             .then(function (response) {
 
-                // Saving the response object (and console log for object check)
+                // Saving the response object
                 var newResponse = response;
-                // console.log(response);
-
 
                 //create var object of data = location.data + weather.data ...etc
                 var ajaxResponseArray = [];
@@ -170,40 +159,20 @@ function updateWeatherDataFromLocal(snapshot) {
 
 
                 //=======================THEN YOU NEED TO SAVE DATA TO FIREBASE=========
-                // console.log("AJax sent to Firebase");
 
                 updateFirebase(newResponse);
-
-                // console.log("after firebase");
 
                 updatePrintDisplay(ajaxResponseArray);
 
                 // inspect returned info for umbrella alert update
                 compareWeatherId(ajaxResponseArray);
                 
-
             });
-
-    }
+    };
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// =========================================================================================================
 
 
 
@@ -211,7 +180,6 @@ function updateWeatherDataFromLocal(snapshot) {
 // function updatePrintDisplay(object);
 //this updates the html text display
 function updatePrintDisplay(array) {
-    // console.log("updatePrintDisplay ran");
     var newCollection = $('<div>');
     for (var i = 0; i < array.length - 7; i++) {
         var newP = $('<div>' + array[i] + ": " + array[i + 1] + '</div>');
@@ -223,9 +191,8 @@ function updatePrintDisplay(array) {
     $('#parentDiv').html(newCollection);
 };
 
+//this is for a save data from AJAX to firebase collection
 function updateFirebase(newResponse) {
-    console.log("local.toCity");
-    console.log(localStorageObject.toCity);
     cityConnection = database.ref("/" + localStorageObject.toCity)
     cityConnection.set({
         lastUpdate: Date.now(),
@@ -244,14 +211,12 @@ function updateFirebase(newResponse) {
     cityConnection.once("value", function (snapshot) {
         console.log(snapshot.val());
         console.log("above was updateFirebase cityConnection.val()")
-        // console.log(snapshot.val());
     });
 
 };
 
 //this checks the weatherId against a list
 function compareWeatherId(array) {
-    // console.log("compareWeatherRan");
     if (200 < array[17] && array[17] < 299) {
         $('#umbrellaDiv').text("Thunderstorms");
         appendIcon(array);
@@ -276,7 +241,7 @@ function appendIcon(array) {
     $('#umbrellaDiv').append($('<img src="http://openweathermap.org/img/w/' + array[15] + '.png">'));
 }
 
-
+// minseoks setCookie function as a global function called from within the .ready 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -287,25 +252,8 @@ function setCookie(cname, cvalue, exdays) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// =============================================================================================================
+// =============================================================================================================
 
 
 
@@ -325,7 +273,6 @@ $(document).ready(function () {
 
             var con = connection.push($("#nameInput").val());
             setCookie("commuteUser=" + con.key, con.key, 1);
-            console.log(con.key);
 
             //set everything for localStorage of User
             localStorage.setItem("fromAddress", $("#addressFromInput").val());
@@ -343,8 +290,8 @@ $(document).ready(function () {
             localStorage.setItem("Required Arrival Time", $("#requiredArrivalTime").val());
             localStorage.setItem("Morning Routine Time", $("#morningRoutineTime").val());
 
+            //added an update to weather on submit
             cityConnection = database.ref("/" + localStorageObject.toCity);
-            console.log(localStorageObject.toCity);
             cityConnection.once("value", function (snapshot) {
                 updateWeatherDataFromLocal(snapshot);
 
@@ -354,13 +301,13 @@ $(document).ready(function () {
         });
     });
 
+// this is the initial weather data load
+
     // NEED TO DO A COOKIE CHECK ON LOAD TO EVEN RUN THE LOAD IN THE FIRST PLACE
            //this pulls from the localStorage toCity from onload
            console.log(localStorageObject.toCity);
            console.log("above was localstorage.toCity right before initial connection output which should be same as initial value")
         cityConnection.once("value", function (snapshot) {
-            console.log(snapshot.val())
-            console.log("initial connection output");
             updateWeatherDataFromLocal(snapshot);
         });
     
