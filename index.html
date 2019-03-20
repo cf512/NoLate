@@ -42,84 +42,57 @@
     $(window).on('load',function(){
       $('#myModal').modal('show')
     });
-  </script>;
+  </script>
 </head>
 <body>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Click Here</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Click Here</button>
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <form action="" method = "" id="inputForm">
           <div id="info">
-            <label for="nameInput">Name</label> <br />
+            <label for="nameInput">Name: </label>
             <input type="text" id="nameInput">
           </div>
-          <label>
-            <p>Transportation Method:</p>
-            <input list="transportationMethod" class="transpo" id="transport">
-            <datalist id="transportationMethod">
-              <option value="Driving">Driving</option>
-              <option value="Transit">Transit</option>
-              <option value="Bicycling">Bicycling</option>
-              <option value="Walking">Walking</option>
-            </datalist>
-          </label>
+          <hr>
           <div class="fromInputDiv">
             <label>
-              <p>From:</p> <br />
-              <p>Address:</p>
+              <span>From Address: </span>
               <input type="text" class="fromInput"id="addressFromInput">
-            </label>
-            <label>
-              <br /> 
-              <p>City:<p>
-              <input type="text" class="fromInput"id="cityFromInput" disabled="true">
-            </label>
-            <label>
-              <br /> 
-              <p>State:</p>
-              <input list="fromStateId" class="fromInput" id="stateFromInput" disabled="true">
-            </label>
-            <label>
-              <br /> 
-              <p>Zip:</p>
-              <input type="number" class="fromInput" id="zipFromInput" disabled="true">
+
             </label>
           </div>
+          <hr>
           <div id= "toInputDiv">
-            <label> <br />
-              To: <br />
-              <br>Address: <br />
+            <label>
+             <span>To Address: </span>
               <input type="text" class="toInput"id="addressToInput">
             </label>
-            <label>
-              <br /> <p>City:</p>
-              <input type="text" class="toInput"id="cityToInput" disabled="true">
-            </label>
-            <label>
-              <br /> 
-              <p>State:</p>
-              <input list="toStateId" class="toInput" id="stateToInput" disabled="true">
-            </label>
-            <label>
-              <br /> 
-              <p>Zip:</p>
-              <input type="number" class="toInput" id="zipToInput" disabled="true">
-            </label>
           </div>
-          <div id="time"> <br />
+          <hr>
+          <div id="time">
             <p>Required Arrival Time:</p>
             <input type="time" id="requiredArrivalTime">
-            <p>Morning Routine Time:</p>
-            <input type="time" id="morningRoutineTime">
+            <hr>
+            <p>Morning Routine Duration (in minutes):</p>
+            <input type="number" id="morningRoutineTime">
           </div>
-
+          <hr>
+          <label>
+              <span>Transportation Method:</span>
+              <input list="transportationMethod" class="transpo" id="transport">
+              <datalist id="transportationMethod">
+                <option value="Driving">Driving</option>
+                <option value="Transit">Transit</option>
+                <option value="Bicycling">Bicycling</option>
+                <option value="Walking">Walking</option>
+              </datalist>
+            </label>
+          <hr>
           <div id="reset_submit">
-            <br />
             <input type="submit" id="submitButton" value="Submit">
             <input type="reset" id="formReset" value="Reset">
           </div>
-          <br /> <br />
         </form>
       </div>
     </div>
