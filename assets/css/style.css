@@ -41,7 +41,30 @@ font-weight: bold;
 #addressFromInput {
     width: 400px;
 }
-
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;
+}
+.modal-backdrop{
+    z-index: 10;
+}
+#map {
+    width: 500px;
+    height: 400px;
+    margin-top: 10px;
+}
+#bodyWrap {
+    display:none;
+}
+button.btn{
+    display:none;
+}
 .gridContainer {
   border: solid #EC4F6A 10px;
   border-radius: 15px;
@@ -50,7 +73,6 @@ font-weight: bold;
   margin-top: 30px;
   font-family: 'roboto';
 }
-
 #commuteDataDump {
 
   background-color: #FFFFFF;
