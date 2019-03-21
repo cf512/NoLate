@@ -7,7 +7,8 @@ $(function() {
         };
         var transport=localStorage.getItem("transport").toUpperCase();
         var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
-        var directionsService = new google.maps.DirectionsService();
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
         var date = new Date();
         date=date.toDateString()+" "+localStorage.getItem("Morning Routine Time");
 
@@ -29,11 +30,10 @@ $(function() {
             function(response, status) {
                 console.log(response);
                 if (status == google.maps.DirectionsStatus.OK) {
-                    new google.maps.DirectionsRenderer({
-                        map: mapObject,
-                        directions: response,
-                        preserveViewport:false
-                    });
+                    directionsDisplay.setMap(mapObject);
+                    directionsDisplay.setDirections(response);
+                    directionsDisplay.getMap().setZoom(15);
+
                     $("#googleMapDump p").text("");
                     $("#googleMapDump p").append("Transport : "+transport);
                     $("#googleMapDump p").append("<br>From : "+response.routes[0].legs[0].start_address);
