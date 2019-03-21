@@ -1,8 +1,8 @@
 $(function() {
-    function calculateRoute(from, to) {
+    function calculateRoute(from, to) { 
         var myOptions = {
-            zoom: 10,
-            center: new google.maps.LatLng(30.27, -97.74), 
+            zoom: 15,
+            center: {lat: 30.27, lng :-97.74}, 
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var transport=localStorage.getItem("transport").toUpperCase();
@@ -27,10 +27,12 @@ $(function() {
         directionsService.route(
             directionsRequest,
             function(response, status) {
+                console.log(response);
                 if (status == google.maps.DirectionsStatus.OK) {
                     new google.maps.DirectionsRenderer({
                         map: mapObject,
-                        directions: response
+                        directions: response,
+                        preserveViewport:false
                     });
                     $("#googleMapDump p").text("");
                     $("#googleMapDump p").append("Transport : "+transport);
@@ -56,6 +58,9 @@ $(function() {
     $("#submitButton").on("click",function(event){
         event.preventDefault();
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
-        
     });
+
+    if(checkCookie()) {
+        calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
+    }
 });
