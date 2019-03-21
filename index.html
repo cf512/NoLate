@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Heebo|Roboto:400,700" rel="stylesheet">
   <style>
     .pac-container {
       background-color: #FFF;
@@ -25,6 +26,7 @@
     }
     .modal-backdrop{
       z-index: 10;
+      opacity: .8 !important;
     }
     #map {
         width: 100%;
@@ -40,7 +42,12 @@
   </script>
 </head>
 <body>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Click Here</button>
+  <!-- NAV BAR -->
+  <!-- <nav class="navbar navbar-light bg-light" id="navBar">
+    <span class="navbar-brand mb-0 h1">NoLate</span>
+  </nav> -->
+<!-- ********************************* -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">New Destination</button>
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
