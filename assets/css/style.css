@@ -1,7 +1,6 @@
 body {
     margin: 10px 25px 10px 25px;
 }
-
 .modal-content {
     padding: 20px;
 }
@@ -13,28 +12,49 @@ body {
 #addressFromInput {
     width: 400px;
 }
-
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;
+}
+.modal-backdrop{
+    z-index: 10;
+}
+#map {
+    width: 500px;
+    height: 400px;
+    margin-top: 10px;
+}
+#bodyWrap {
+    display:none;
+}
+button.btn{
+    display:none;
+}
 .gridContainer {
-  border: solid #EC4F6A 10px;
-  border-radius: 15px;
-  background-color: #FFFFFF;
-  padding: 30px;
+    border: solid #EC4F6A 10px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    padding: 30px;
 }
-
 #commuteDataDump {
-  background-color: #4aaaa5;
+    background-color: #4aaaa5;
 }
-
 #googleMapDump {
-  background-color: pink;
+    background-color: pink;
 }
 
 #weatherDataDump {
-  background-color: pink;
+    background-color: pink;
 }
 #weatherBox {
-  background-color: pink;
+    background-color: pink;
 }
 #umbrellaAlert {
-  background-color: #4aaaa5;
+    background-color: #4aaaa5;
 }
