@@ -13,3 +13,28 @@ body {
 #addressFromInput {
     width: 400px;
 }
+
+.gridContainer {
+  border: solid #EC4F6A 10px;
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  padding: 30px;
+}
+
+#commuteDataDump {
+  background-color: #4aaaa5;
+}
+
+#googleMapDump {
+  background-color: pink;
+}
+
+#weatherDataDump {
+  background-color: pink;
+}
+#weatherBox {
+  background-color: pink;
+}
+#umbrellaAlert {
+  background-color: #4aaaa5;
+}
