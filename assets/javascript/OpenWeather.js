@@ -199,7 +199,7 @@ window.onload = function () {
                 },
                 responsive: true,
                 legend: {
-                    position: 'right',
+                    display: false,
                 },
                 title: {
                     display: true,

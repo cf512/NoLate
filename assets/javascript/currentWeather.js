@@ -227,14 +227,14 @@ function compareWeatherId(array) {
         appendIcon(array);
     } else {
         $('#umbrellaAlert').text("Its going to be a wonderful day");
-        $('#umbrellaAlert').append($('<img src="http://openweathermap.org/img/w/02d.png">'));
+        $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/02d.png">'));
     };
 };
 
 
 //this updates the condition icon and text alert display
 function appendIcon(array) {
-    $('#umbrellaAlert').append($('<img src="http://openweathermap.org/img/w/' + array[15] + '.png">'));
+    $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
 }
 
 // minseoks setCookie function as a global function called from within the .ready 
