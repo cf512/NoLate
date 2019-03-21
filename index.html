@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/javascript/display.js"></script>
+  
   <style>
     .pac-container {
       background-color: #FFF;
@@ -27,17 +29,17 @@
       z-index: 10;
     }
     #map {
-        width: 100%;
+        width: 500px;
         height: 400px;
         margin-top: 10px;
     }
+    #bodyWrap {
+      display:none;
+    }
+    button.btn{
+      display:none;
+    }
   </style>
-
-  <script type="text/javascript">
-    $(window).on('load',function(){
-      $('#myModal').modal('show')
-    });
-  </script>
 </head>
 <body>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Click Here</button>
@@ -91,38 +93,38 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> 
 <!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
   <div id="bodyWrap">
     <div class="gridContainer">
       <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-6" id="commuteDataDump">
+        <div class="col-sm-4 col-md-4 col-lg-4" id="commuteDataDump">
           <h1 id="duration"></h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-6" id="googleMapDump">
+        <div class="col-sm-4 col-md-4 col-lg-4" id="googleMapDump">
           <div id="map"></div>
-
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-      </div>
-        <!-- <div class="col-sm-4 col-md-4 col-lg-4" id="morningRoutineList">
+        <div class="col-sm-4 col-md-4 col-lg-4" id="morningRoutineList">
           <h1>Text</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div> -->
+        </div>
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-6" id="weatherBox">
+          <div class="col-sm-4 col-md-4 col-lg-4"s>
             <canvas id="canvas"></canvas>
             <div id="weatherDataDump">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-6" id="umbrellaAlert">
+          <div class="col-sm-4 col-md-4 col-lg-4" id="umbrellaAlert">
             <img id="umbrellaAlertImg" src="">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-          <!-- <div class="col-sm-4 col-md-4 col-lg-4" id="morningToDo">
+          <div class="col-sm-4 col-md-4 col-lg-4" id="morningToDo">
             <h1>Text</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
