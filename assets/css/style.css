@@ -1,6 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  margin-left: 45%;
+  margin-top: 20px;
+}
+
 body {
     margin: 10px 25px 10px 25px;
 }
+
+#navBar {
+  border: solid #EC4F6A 8px;
+  width: 100%;
+  margin: 5px;
+  padding-left: 10rem;
+  font-weight: bold;
+}
+
+.navbar-brand {
+font-size: 30px;
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+}
+
+#bodyWrap {
+  font-size:25px;
+
+}
+
 .modal-content {
     padding: 20px;
 }
@@ -37,24 +66,39 @@ button.btn{
     display:none;
 }
 .gridContainer {
-    border: solid #EC4F6A 10px;
-    border-radius: 15px;
-    background-color: #FFFFFF;
-    padding: 30px;
+  border: solid #EC4F6A 10px;
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  padding: 30px;
+  margin-top: 30px;
+  font-family: 'roboto';
 }
 #commuteDataDump {
-    background-color: #4aaaa5;
-}
-#googleMapDump {
-    background-color: pink;
+
+  background-color: #FFFFFF;
+  text-align: center;
+  padding-top: 90px;
 }
 
-#weatherDataDump {
-    background-color: pink;
+#googleMapDump:hover {
+  transform: scale(1.05);
+
 }
+
+
+#weatherDataDump:hover {
+  transform: scale(1.05);
+  background-color: #FFFFFF;
+}
+
 #weatherBox {
-    background-color: pink;
+  background-color: #FFFFFF;
+  text-align: center;
 }
-#forecastDiv {
-  background-color: #4aaaa5;
+
+
+#umbrellaAlert {
+  background-color: #FFFFFF;
+  text-align: center;
+  padding-top: 25%;
 }
