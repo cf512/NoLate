@@ -55,6 +55,6 @@ button.btn{
 #weatherBox {
     background-color: pink;
 }
-#umbrellaAlert {
-    background-color: #4aaaa5;
+#forecastDiv {
+  background-color: #4aaaa5;
 }

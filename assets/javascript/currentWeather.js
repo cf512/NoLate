@@ -185,7 +185,7 @@ function updatePrintDisplay(array) {
         //iterating twice so that I am using array like a dictionary
         i++;
     };
-    $('#weatherDataDump').html(newCollection);
+    $('#weatherDataDump').append(newCollection);
 };
 
 //this is for a save data from AJAX to firebase collection
