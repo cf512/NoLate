@@ -49,8 +49,14 @@ function updateAlarmClock(){
         
 		function setAlarm(button) {
             var LocalStorageObject = window.localStorage;
-            LocalStorageObject.setItem("startTime", "1028");
-            console.log("alarm is set to one minute to minute");
+
+            //this sets the startTime to the requiredArrivalTime for testing
+            var arrivalTimer = localStorageObject.getItem("requiredArrivalTime")
+            arrivalTimerArray = arrivalTimer.split(":");
+            arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
+            LocalStorageObject.setItem("startTime", arrivalTimer);
+
+
             var ms = localStorageObject.getItem("startTime");
 			if(isNaN(ms)) {
 				alert('Invalid Date');
@@ -58,16 +64,7 @@ function updateAlarmClock(){
 			}
 
 
-            var today = new Date();
-            var todayArray = today.toString().split(" ");
-            
-            var todayArrayTime = todayArray[4];
-            var todayArrayTimeArray = todayArrayTime.split(":")
-            var todayArrayTimeHours = todayArrayTimeArray[0];
-            var todayArrayTimeMinutes = todayArrayTimeArray[1];
-            var todayArrayTimeSeconds = todayArrayTimeArray[2];
-           
-            var todayArrayDay = todayArray[2];
+            getTodayDate();
             
             var differenceInMs = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
             
