@@ -51,9 +51,12 @@ function updateAlarmClock(){
             var LocalStorageObject = window.localStorage;
 
             //this sets the startTime to the requiredArrivalTime for testing
-            var arrivalTimer = localStorageObject.getItem("requiredArrivalTime")
-            arrivalTimerArray = arrivalTimer.split(":");
-            arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
+            var arrivalTimerArray = localStorageObject.getItem("requiredArrivalTime").slice(0,(localStorageObject.getItem("requiredArrivalTime").length-2)).split(":");
+            var arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1]
+
+            console.log(arrivalTimer)
+            // arrivalTimerArray = arrivalTimer.split(":");
+            // arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
             LocalStorageObject.setItem("startTime", arrivalTimer);
 
 
