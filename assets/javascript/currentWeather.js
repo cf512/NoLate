@@ -1,4 +1,4 @@
-//===================test harness for pushing data==============================
+//==================test harness for pushing data==============================
 //always false data
 //always defaults to firebaseArray
 // cityConnection.set({
@@ -244,34 +244,32 @@ function appendIcon(array) {
 // =============================================================================================================
 
 
-
-
 // document.ready function for any print to screen function
 $(document).ready(function () {
-
-    // minseoks code from his submit.js file
-    $(function () {
-
-        var connection = database.ref("/userdata");
-
         //on submit of form
-        $("#submitButton").on("click", function (event) {
-            event.preventDefault();
-            stopAlarm()
+    $("#submitButton").on("click", function (event) {
+        event.preventDefault();
+        stopAlarm();
 
-            //added an update to weather on submit
-            cityConnection = database.ref("/" + localStorageObject.toCity);
-            cityConnection.once("value", function (snapshot) {
-                updateWeatherDataFromLocal(snapshot);
-
-            });
-
+        //added an update to weather on submit
+        cityConnection = database.ref("/" + localStorageObject.toCity);
+        cityConnection.once("value", function (snapshot) {
+            updateWeatherDataFromLocal(snapshot);
 
         });
+
+
     });
 
 // this is the initial weather data load
-
+    if(localStorageObject.getItem("toCity")!==null){ 
+        cityConnection = database.ref("/"+localStorageObject.toCity);
+        cityConnection.once("value", function (snapshot) {
+            updateWeatherDataFromLocal(snapshot);
+        });
+    }else{
+        
+    };    
     // NEED TO DO A COOKIE CHECK ON LOAD TO EVEN RUN THE LOAD IN THE FIRST PLACE
     //this pulls from the localStorage toCity from onload
   
