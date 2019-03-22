@@ -55,15 +55,14 @@
           </div>
           <hr>
           <label>
-              <span>Transportation Method:</span>
-              <input list="transportationMethod" class="transpo" id="transport">
-              <datalist id="transportationMethod">
-                <option value="Driving">Driving</option>
-                <option value="Transit">Transit</option>
-                <option value="Bicycling">Bicycling</option>
-                <option value="Walking">Walking</option>
-              </datalist>
-            </label>
+            <p>Transportation Method: </p>
+            <select class="custom-select" id="transport">
+              <option value="Driving">Driving</option>
+              <option value="Transit">Transit</option>
+              <option value="Bicycling">Bicycling</option>
+              <option value="Walking">Walking</option>
+            </select>
+          </label>
           <hr>
           <div id="reset_submit">
             <input type="submit" id="submitButton" data-dismiss="modal" value="Submit">
