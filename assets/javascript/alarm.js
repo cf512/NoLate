@@ -1,5 +1,5 @@
 //needs to do a current time and date output
-
+console.log("alarm.js is loaded")
 function updateAlarmClock(){
     localStorageObject = window.localStorage;
     
@@ -50,9 +50,75 @@ function updateAlarmClock(){
     newDiv.append('<p> Total Time to Deduct: '+totalHoursOutput+totalMinutesOutput+ '</p>');   
     $('#commuteDataDump').html(newDiv); 
 };
+		
+		var alarmSound = new Audio();
+		alarmSound.src = 'alarm.mp3';
+        var alarmTimer;
+        
+		function setAlarm(button) {
+            console.log('buttonCLick');
+            var LocalStorageObject = window.localStorage;
+            LocalStorageObject.setItem("setTimer", "1939");
+            var ms = localStorageObject.getItem("setTimer");
+			if(isNaN(ms)) {
+				alert('Invalid Date');
+				return;
+			}
 
-//alarm needs an active/deactive flag
-//html will need a button for turn on alarm
+
+            var today = new Date();
+            var todayArray = today.toString().split(" ");
+            console.log("today: "+today);
+            console.log(todayArray);
+            
+            var todayArrayTime = todayArray[4];
+            var todayArrayTimeArray = todayArrayTime.split(":")
+            var todayArrayTimeHours = todayArrayTimeArray[0];
+            var todayArrayTimeMinutes = todayArrayTimeArray[1];
+            var todayArrayTimeSeconds = todayArrayTimeArray[2];
+            console.log(todayArrayTimeHours+ " : "+todayArrayTimeMinutes+" : "+todayArrayTimeSeconds);
+
+            var todayArrayDay = todayArray[2];
+            console.log(todayArrayDay);
+            
+            var differenceInMs = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
+            console.log(differenceInMs);
+
+			if(differenceInMs < 0) {
+				alert('Specified time is already passed');
+				return;
+			}
+
+            alarmTimer = setTimeout(initAlarm, differenceInMs);
+            console.log("timerSet")
+			button.innerText = 'Cancel Alarm';
+			button.setAttribute('onclick', 'cancelAlarm(this);');
+		};
+
+		function cancelAlarm(button) {
+			clearTimeout(alarmTimer);
+			button.innerText = 'Set Alarm';
+			button.setAttribute('onclick', 'setAlarm(this);')
+		};
+
+		function initAlarm() {
+			//alarm needs an active/deactive flag
+            //html will need a button for turn on alarm
+            alarmSound.play();
+			document.getElementById('alarmOptions').style.display = '';
+		};
+
+		function stopAlarm() {
+			alarmSound.pause();
+			alarmSound.currentTime = 0;
+			document.getElementById('alarmOptions').style.display = 'none';
+			cancelAlarm(document.getElementById('alarmButton'));
+		};
+
+		function snooze() {
+			stopAlarm();
+			alarmTimer = setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
+		};
 
 //needs to do a isActive check
     //needs to check time and compare to EstimatedDepartureTime if EstimatedDepartureTime >= $.now(){
