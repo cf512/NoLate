@@ -35,7 +35,6 @@ function calculateRoute(from, to) {
 
     startTime.subtract(30, 'minutes');
     googleCheck(from,to);     
-        
 }
 
 function googleCheck(from,to) {
@@ -66,6 +65,8 @@ function googleCheck(from,to) {
                         directionsDisplay.getMap().setZoom(15);
                         localStorage.setItem('startTime', startTime.subtract(localStorage.getItem("morningRoutineTime"), 'minutes').format('HH:mm'));
                         localStorage.setItem('transitTime', duration);
+                        timeCheck=false;
+                        timeCheckFinished=false;
                         updateAlarmClock();
                         return;
                     } else {
