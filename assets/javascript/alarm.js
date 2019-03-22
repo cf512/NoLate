@@ -58,7 +58,8 @@ function updateAlarmClock(){
 		function setAlarm(button) {
             console.log('buttonCLick');
             var LocalStorageObject = window.localStorage;
-            LocalStorageObject.setItem("setTimer", "1939");
+            LocalStorageObject.setItem("setTimer", "2359");
+            console.log("alarm is set to one minute to minute");
             var ms = localStorageObject.getItem("setTimer");
 			if(isNaN(ms)) {
 				alert('Invalid Date');
@@ -68,22 +69,17 @@ function updateAlarmClock(){
 
             var today = new Date();
             var todayArray = today.toString().split(" ");
-            console.log("today: "+today);
-            console.log(todayArray);
             
             var todayArrayTime = todayArray[4];
             var todayArrayTimeArray = todayArrayTime.split(":")
             var todayArrayTimeHours = todayArrayTimeArray[0];
             var todayArrayTimeMinutes = todayArrayTimeArray[1];
             var todayArrayTimeSeconds = todayArrayTimeArray[2];
-            console.log(todayArrayTimeHours+ " : "+todayArrayTimeMinutes+" : "+todayArrayTimeSeconds);
-
+           
             var todayArrayDay = todayArray[2];
-            console.log(todayArrayDay);
             
             var differenceInMs = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
-            console.log(differenceInMs);
-
+            
 			if(differenceInMs < 0) {
 				alert('Specified time is already passed');
 				return;
