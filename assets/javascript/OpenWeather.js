@@ -8,44 +8,42 @@ window.chartColors = {
     grey: 'rgb(201, 203, 207)'
 };
 var colorNames = Object.keys(window.chartColors);
-var MONTHS = ['1st day', '2nd day', '3rd day', '4th day', '5th day'];
+
 var color = Chart.helpers.color;
 var horizontalBarChartData = {
-    labels: ['1st day', '2nd day', '3rd day', '4th day', '5th day'],
+    labels: [],
     datasets: [{
         label: 'Max Temp',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         borderWidth: 1,
-        data: [
-            67,
-            72,
-            65,
-            68,
-            71
-        ]
+        data: []
     }, {
         label: 'Min Temp',
         backgroundColor: 'rgb(54, 162, 235)',
         borderColor: 'rgb(54, 162, 235)',
-        data: [
-            54,
-            49,
-            48,
-            54,
-            51
-        ]
+        data: []
     }]
 
 };
 
-var arrayOfInclementWeather = ["rain", "snow", "fog", "drizzle", "sleet", "hail"];
+
+
+
+var arrayOfInclementWeather = ["Rain", "Snow", "Drizzle", "Thunderstorm", "Fog"];
 var umbrellaIcon = "";
 var umbrellaText = "";
 var parsedMaxTempArray = [];
 var parsedMinTempArray = [];
 var parsedConditionsArray = [];
+
 var forecastDays = [
+    day0 = {
+        maxTemp: 0,
+        minTemp: 0,
+        condition: "",
+        date: ""
+    },
     day1 = {
         maxTemp: 0,
         minTemp: 0,
@@ -69,151 +67,173 @@ var forecastDays = [
         minTemp: 0,
         condition: "",
         date: ""
-    },
-    day5 = {
-        maxTemp: 0,
-        minTemp: 0,
-        condition: "",
-        date: ""
     }
 ]
-//function updateChartJS(array);
-//this pushes data into the forecastChart\
+
+
+function updateChartJS(junk, array2, dateArray) {
+    //this pushes data into the forecastChart\
+    var maxValues = junk;
+    maxValues.forEach(function(element) {
+        horizontalBarChartData.datasets[0].data.push(element);
+    });
+    var minValues = array2;
+    minValues.forEach(function (element) {
+        horizontalBarChartData.datasets[1].data.push(element);
+    });
+    var dateValues = dateArray;
+    dateValues.forEach(function(element){
+        horizontalBarChartData.labels.push(element);
+    });
 //adds to datasets[0].data[i];
 //adds to datasets[1].data[i];
+};
 
-//function parseMaxTempArray();
-//this takes the max temp array and finds the greatest value
+function updateChartData() {
+    //this will need to ask if weatherForecastData has been updated in the last 10minutes, much like the other code
+    //can I leverage written code for the update weather check
+    //firebase data will need to call updateChartJS(junk, array2, dateArray)
+    
+        //=============Forecast AJAX call======================================================
+        //=====================================================================================
+        // api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
+        // Ajax call for forecast
+        var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=Austin,us&APPID=f811d6890d096d171ee1586e5b3264b4&units=imperial";
+        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f811d6890d096d171ee1586e5b3264b4";
+    
+        // Perfoming an AJAX GET request to our queryURL
+        $.ajax({
+            url: forecastQueryURL,
+            method: "GET"
+        }).then(function (response) {
+            // After the data from the AJAX request comes back
+            // Saving the response object
+            // var newResponse = response;
+            console.log(response);
+            // parseForecastDataIntoArray(newResponse);
+    
+            //this way the update Chart chain is embedded in AJAX command for AJAX data
+    
+            var objectOfData = [1, 2, 3, 4, 5];
+            var fakedArray = [1, 2, 3, 4, 5];
+            var fakedArray2 = [5, 4, 3, 2, 1];
+            updateChartJS(fakedArray, fakedArray2, objectOfData);
 
-//function parseMinTempArray();
-//this takes the min temp array and finds the least value
+            var ctx = document.getElementById('canvas')
+            // .getContext('2d');
+            window.myHorizontalBar = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: horizontalBarChartData,
+                options: {
+                    // Elements options apply to all of the options unless overridden in a dataset
+                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                    elements: {
+                        rectangle: {
+                            borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: '5 Day Forecast'
+                    }
+                }
+            });
+            //=======================================================
+            //=======you have to traverse the forecast the get the most accurate data for now
+            //=======the API array starts at [0] = today @ 00:00:00 format= "2019-03-21 00:00:00"
+    
+            //loop through array returned and build arrays for maxTemp minTemp and Conditions
+            //set return to var parseMaxTempArray(date, arrayObject);
+            //set return to var parseMinTempArray(date, arrayObject);
+            //set return to var parseConditionsArray(date, arrayObject);
+            // list.main.temp_max
+            // list.main.temp_min
+            // list.weather.id
+            // list.weather.icon 
+            // list.weather.description
+            // list.weather.main
+    
+            //Firebase call for forecast today REMINDER: today = day0 
+    
+            //build object of data including day0
+            //save all data back to firebase city object including timestamp of update Date.now()
+            //should overwrite current data for the city object, including all previous dates
+            //for firebase return of condition = adverse condition update umbrellaicon and umbrellaText
+    
+            // ==============================END of second AJAX call - forecast =============================================================
+    
+        });
+    };
 
-//function parseConditionsArray();
+
+
+// //this takes the max temp array and finds the greatest value
+// function parseMaxTempArray(maxTempArray){
+//     //compare all values and find greatest value
+//     //set the forecastDays[i].maxTemp=greatest value
+
+// }
+
+
+// function parseMinTempArray(minTempArray){
+// //this takes the min temp array and finds the least value
+// //compare all values and find least value
+//     //set the forecastDays[i].minTemp=leastvalue
+
+// };
+
+// function parseConditionsArray(conditionsArray){
+//     //compares all values to a value chain and first one that is >= 0 returns
+//     //set the forecastDays[i].condition=returned value
+// };
 //this compares the condition array with an indexOf check for rain, snow or fog and updates umbrellaDisplay
 
+// function parseForecastDataIntoArray(object){
+// //this takes the API data and splits it into arrays per desired data type
+// //function parseForecastDataIntoArray();
 
-//this takes the API data and splits it into arrays per desired data type
-//function parseForeCastDataIntoArray();
- // for loop 5times{
-            //does the forEachbelow then
-            //calls parse maxTemp;
-            //calls parse minTemp;
-            //calls parse conditions;
-            
-        
-        //forEach Loop .list[i]{
-        //add to maxTempArray;
-        //add to minTempArray;
-        //add to conditionsArray;
+// // var objectOfIndexes={0index, 1index, 2index, 3index, 4index}
+// // var targetIndex = first index in forecast data
+// //get date of targetIndex in forecast data
 
+// //I could embed this in a for loop that happens 5 times (or while loop targetIndex < array.length)
+// //while the current date is equal to the date of the targetIndex add this data to the parseArrays
+// var minTempArray = [];
+// var maxTempArray = [];
+// var conditionsArray = [];
+// parseMaxTempArray(maxTempArray);
+// parseMinTempArray(minTempArray);
+// parseConditionsArray(conditionsArray);
+// //set forecastDays[i].date = targetIndex
+// //when no longer true
+// //then set targetIndex = date of the next index
+// //loop iteration naturally ends and the next for loop happens
 
+// // end of for loop
+
+// //once the data is into the forecastObject
+// var junk = [];
+// var array2 = [];
+// var labels = [];
+// // for loop 5times{
+// //does the forEachbelow then
+// //junk.push(forecastDays[i].maxTemp)
+// //array2.push(forecastDays[i].minTemp)
+// //labels.push(forecaseDays[i].date)
+// }
 
 
 
 window.onload = function () {
-    // ==================here is where I threw the forecast AJAX function for everything========
-    //=============Forecast AJAX call======================================================
-    //=====================================================================================
-    // api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
-    // Ajax call for forecast
-    var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=Austin,us&APPID=f811d6890d096d171ee1586e5b3264b4&units=imperial";
-    // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f811d6890d096d171ee1586e5b3264b4";
-
-    // Perfoming an AJAX GET request to our queryURL
-    $.ajax({
-        url: forecastQueryURL,
-        method: "GET"
-    }).then(function (response) {
-        // After the data from the AJAX request comes back
-        // Saving the response object
-        var newResponse = response;
-       
+    updateChartData();
 
 
-        //=======================================================
-        //=======you have to traverse the forecast the get the most accurate data for now
-        //=======the API array starts at [0] = today @ 00:00:00 format= "2019-03-21 00:00:00"
+    // ===============this is the on.ready call to print the chart===============================================
 
-        //parseForecastDataIntoArray();
+   
 
-       
-
-        // Creating Elements and storing the text data
-        // var printArray = ["temp", "humidity", "description"]
-        // printArray.forEach(function (element) {
-
-        //     var newP = $("<p>");
-
-        //     newP.text("test " + element);
-
-
-        //     newDiv.append(newP);
-        // })
-        // for (i = 0; i < 39; i++) {
-        //     newDiv.append('<p>' + JSON.stringify(newResponse.list[i]) + '</p>');
-        // };
-
-        // // Prepending the created elements to the HTML.document
-        // $("#idOFWhatever").append(newDiv);
-        // });
-        //loop through array returned and build arrays for maxTemp minTemp and Conditions
-        //set return to var parseMaxTempArray(date, arrayObject);
-        //set return to var parseMinTempArray(date, arrayObject);
-        //set return to var parseConditionsArray(date, arrayObject);
-        // list.main.temp_max
-        // list.main.temp_min
-        // list.weather.id
-        // list.weather.icon 
-        // list.weather.description
-        // list.weather.main
-
-        //Firebase call for forecast today REMINDER: today = day0 
-
-        //build object of data including day0
-        //save all data back to firebase city object including timestamp of update Date.now()
-        //should overwrite current data for the city object, including all previous dates
-
-        //for firebase return of condition = adverse condition update umbrellaicon and umbrellaText
-        //call updateChartJS(object of data)
-
-
-        // ==============================END of second AJAX call - forecast =============================================================
-
-
-
-
-
-
-        var ctx = document.getElementById('canvas')
-        // .getContext('2d');
-        window.myHorizontalBar = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: horizontalBarChartData,
-            options: {
-                // Elements options apply to all of the options unless overridden in a dataset
-                // In this case, we are setting the border of each horizontal bar to be 2px wide
-                elements: {
-                    rectangle: {
-                        borderWidth: 2,
-                    }
-                },
-                responsive: true,
-                legend: {
-                    display: false,
-                },
-                title: {
-                    display: true,
-                    text: '5 Day Forecast'
-                }
-            }
-        });
-
-    });
-
-
-
-
-
-
-
-}
+};
