@@ -265,7 +265,7 @@ $(document).ready(function () {
         //on submit of form
         $("#submitButton").on("click", function (event) {
             event.preventDefault();
-            
+            stopAlarm()
 
             //added an update to weather on submit
             cityConnection = database.ref("/" + localStorageObject.toCity);

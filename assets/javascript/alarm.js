@@ -114,7 +114,9 @@ function updateAlarmClock(){
 		function snooze() {
 			stopAlarm();
 			alarmTimer = setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
-		};
+        };
+        
+
 
 //needs to do a isActive check
     //needs to check time and compare to EstimatedDepartureTime if EstimatedDepartureTime >= $.now(){
