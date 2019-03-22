@@ -1,5 +1,4 @@
 //needs to do a current time and date output
-console.log("alarm.js is loaded, where was this message?")
 function updateAlarmClock(){
     localStorageObject = window.localStorage;
     
@@ -7,10 +6,6 @@ function updateAlarmClock(){
     var transitTimeConvertedMinutesTotal = Math.floor(localStorageObject.transitTime/60);
     var transitTimeConvertedHours = Math.floor(transitTimeConvertedMinutesTotal/60);
     var transitTimeConvertedMinutesAfterHours= Math.floor(transitTimeConvertedMinutesTotal%60);
-    console.log(localStorageObject.transitTime);
-    console.log(transitTimeConvertedMinutesTotal);
-    console.log(transitTimeConvertedHours);
-    console.log(transitTimeConvertedMinutesAfterHours);
     
     var transitHoursOutput = "";
     var transitMinutesOutput = "";
@@ -22,11 +17,8 @@ function updateAlarmClock(){
         transitHoursOutput = "";
         transitMinutesOutput = transitTimeConvertedMinutesTotal+ " minutes";
     }
-    console.log("morning routine time: "+parseInt(localStorageObject.morningRoutineTime));
     var totalTimeToDeductMinutesTotal = transitTimeConvertedMinutesTotal+parseInt(localStorageObject.morningRoutineTime);
-    console.log(totalTimeToDeductMinutesTotal);
     var totalTimeToDeductHours = Math.floor(totalTimeToDeductMinutesTotal/60);
-    console.log(totalTimeToDeductHours);
     var totalTimeToDeductMinutesAfterHours = Math.floor(totalTimeToDeductMinutesTotal%60);
 
     var totalHoursOutput;
@@ -56,10 +48,18 @@ function updateAlarmClock(){
         var alarmTimer;
         
 		function setAlarm(button) {
-            console.log('buttonCLick');
             var LocalStorageObject = window.localStorage;
-            LocalStorageObject.setItem("startTime", "1028");
-            console.log("alarm is set to one minute to minute");
+
+            //this sets the startTime to the requiredArrivalTime for testing
+            var arrivalTimerArray = localStorageObject.getItem("requiredArrivalTime").slice(0,(localStorageObject.getItem("requiredArrivalTime").length-2)).split(":");
+            var arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1]
+
+            console.log(arrivalTimer)
+            // arrivalTimerArray = arrivalTimer.split(":");
+            // arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
+            LocalStorageObject.setItem("startTime", arrivalTimer);
+
+
             var ms = localStorageObject.getItem("startTime");
 			if(isNaN(ms)) {
 				alert('Invalid Date');
@@ -67,16 +67,7 @@ function updateAlarmClock(){
 			}
 
 
-            var today = new Date();
-            var todayArray = today.toString().split(" ");
-            
-            var todayArrayTime = todayArray[4];
-            var todayArrayTimeArray = todayArrayTime.split(":")
-            var todayArrayTimeHours = todayArrayTimeArray[0];
-            var todayArrayTimeMinutes = todayArrayTimeArray[1];
-            var todayArrayTimeSeconds = todayArrayTimeArray[2];
-           
-            var todayArrayDay = todayArray[2];
+            getTodayDate();
             
             var differenceInMs = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
             
@@ -86,7 +77,6 @@ function updateAlarmClock(){
 			}
 
             alarmTimer = setTimeout(initAlarm, differenceInMs);
-            console.log("timerSet")
 			button.innerText = 'Cancel Alarm';
 			button.setAttribute('onclick', 'cancelAlarm(this);');
 		};

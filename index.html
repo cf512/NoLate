@@ -19,9 +19,10 @@
 </head>
 <body>
   <!-- NAV BAR -->
-  <!-- <nav class="navbar navbar-light bg-light" id="navBar">
-    <span class="navbar-brand mb-0 h1">NoLate</span>
-  </nav> -->
+  <nav class="navbar navbar-light bg-light" id="navBar">
+    <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
+    <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan" class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span id="dayTime" class="mb-0 h3" >Monday</span>, <span id="dateTime" class="mb-0 h3">01/01/1990</span></span>
+  </nav>
 <!-- ********************************* -->
   <button id="newDestination" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">New Destination</button>
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
@@ -115,10 +116,10 @@
         </div>
       </div>
     </div>
+    
     <script type="text/javascript">
       $('#requiredArrivalTime').timepicker({ 'scrollDefault': 'now' });
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_VMgrd_Qmg5Zn0bXcLZbxjbRzw6tjeVM&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="assets/javascript/autocomplete.js"></script>
     <script src="assets/javascript/submit.js"></script>
     <script src="assets/javascript/map.js"></script>
@@ -126,6 +127,7 @@
     <script src="assets/javascript/currentWeather.js"></script>
     <script src="assets/javascript/OpenWeather.js"></script>
     <script src="assets/javascript/alarm.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_VMgrd_Qmg5Zn0bXcLZbxjbRzw6tjeVM&libraries=places&callback=init" async defer></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- FOOTER -->
   </body>
