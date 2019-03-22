@@ -274,10 +274,5 @@ $(document).ready(function () {
 
     // NEED TO DO A COOKIE CHECK ON LOAD TO EVEN RUN THE LOAD IN THE FIRST PLACE
     //this pulls from the localStorage toCity from onload
-    if(localStorageObject.getItem("toCity")!==null){ 
-        cityConnection = database.ref("/"+localStorageObject.toCity);
-        cityConnection.once("value", function (snapshot) {
-            updateWeatherDataFromLocal(snapshot);
-        });
-    };    
+  
 });
