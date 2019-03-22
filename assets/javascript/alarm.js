@@ -1,5 +1,5 @@
 //needs to do a current time and date output
-console.log("alarm.js is loaded")
+console.log("alarm.js is loaded, where was this message?")
 function updateAlarmClock(){
     localStorageObject = window.localStorage;
     
