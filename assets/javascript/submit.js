@@ -63,40 +63,40 @@ function getTodayDate(){
     var todayArrayDateConvertedMonth;
     switch(todayArray[1]){
         case "Jan":
-        todayArrayDateConvertedMonth = 01
+        todayArrayDateConvertedMonth = "01"
         break;
         case "Feb":
-        todayArrayDateConvertedMonth = 02
+        todayArrayDateConvertedMonth = "02"
         break;
         case "Mar":
-        todayArrayDateConvertedMonth = 03
+        todayArrayDateConvertedMonth = "03"
         break;
         case "Apr":
-        todayArrayDateConvertedMonth = 04
+        todayArrayDateConvertedMonth = "04"
         break;
         case "May":
-        todayArrayDateConvertedMonth = 05
+        todayArrayDateConvertedMonth = "05"
         break;
         case "Jun":
-        todayArrayDateConvertedMonth = 06
+        todayArrayDateConvertedMonth = "06"
         break;
         case "Jul":
-        todayArrayDateConvertedMonth = 07
+        todayArrayDateConvertedMonth = "07"
         break;
         case "Aug":
-        todayArrayDateConvertedMonth = 08
+        todayArrayDateConvertedMonth = "08"
         break;
         case "Sep":
-        todayArrayDateConvertedMonth = 09
+        todayArrayDateConvertedMonth = "09"
         break;
         case "Oct":
-        todayArrayDateConvertedMonth = 10
+        todayArrayDateConvertedMonth = "10"
         break;
         case "Nov":
-        todayArrayDateConvertedMonth = 11
+        todayArrayDateConvertedMonth = "11"
         break;
         case "Dec":
-        todayArrayDateConvertedMonth = 12
+        todayArrayDateConvertedMonth = "12"
         break;
 
     }
@@ -126,6 +126,9 @@ function init(){
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
+        var arrayFromAddress = $("#addressToInput").val().split(",");
+        localStorage.setItem("toCity", arrayFromAddress[arrayFromAddress.length-3].trim() );
+        console.log(arrayFromAddress[arrayFromAddress.length-3].trim());
 
         getTodayDate();
 
@@ -138,12 +141,7 @@ function init(){
 
     if(checkCookie()) {
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
-        if(localStorageObject.getItem("toCity")!==null){ 
-            cityConnection = database.ref("/"+localStorageObject.toCity);
-            cityConnection.once("value", function (snapshot) {
-                updateWeatherDataFromLocal(snapshot);
-            });
-        };    
+        
     }
 
     initAutocomplete();
