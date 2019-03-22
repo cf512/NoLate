@@ -12,10 +12,10 @@ body {
 }
 
 #navBar {
-  border: solid #EC4F6A 8px;
+  /* border: solid #EC4F6A 8px; */
   width: 100%;
   margin: 5px;
-  padding-left: 10rem;
+  padding-left: 3rem;
   font-weight: bold;
 }
 
