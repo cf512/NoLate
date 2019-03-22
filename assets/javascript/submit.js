@@ -138,6 +138,12 @@ function init(){
 
     if(checkCookie()) {
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
+        if(localStorageObject.getItem("toCity")!==null){ 
+            cityConnection = database.ref("/"+localStorageObject.toCity);
+            cityConnection.once("value", function (snapshot) {
+                updateWeatherDataFromLocal(snapshot);
+            });
+        };    
     }
 
     initAutocomplete();
