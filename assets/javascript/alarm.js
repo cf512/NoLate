@@ -52,15 +52,15 @@ function updateAlarmClock(){
 };
 		
 		var alarmSound = new Audio();
-		alarmSound.src = 'alarm.mp3';
+		alarmSound.src = 'FinalCountdown.mp3';
         var alarmTimer;
         
 		function setAlarm(button) {
             console.log('buttonCLick');
             var LocalStorageObject = window.localStorage;
-            LocalStorageObject.setItem("setTimer", "2359");
+            LocalStorageObject.setItem("startTime", "1028");
             console.log("alarm is set to one minute to minute");
-            var ms = localStorageObject.getItem("setTimer");
+            var ms = localStorageObject.getItem("startTime");
 			if(isNaN(ms)) {
 				alert('Invalid Date');
 				return;

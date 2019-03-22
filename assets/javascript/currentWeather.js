@@ -130,6 +130,8 @@ function updateWeatherDataFromLocal(snapshot) {
                 var newResponse = response;
 
                 //create var object of data = location.data + weather.data ...etc
+                console.log("ajax response object");
+                console.log(response);
                 var ajaxResponseArray = [];
                 ajaxResponseArray.push("Temperature");
                 ajaxResponseArray.push(newResponse.main.temp + "'F");
@@ -236,16 +238,6 @@ function compareWeatherId(array) {
 function appendIcon(array) {
     $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
 }
-
-// minseoks setCookie function as a global function called from within the .ready 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-
 
 
 // =============================================================================================================
