@@ -22,6 +22,7 @@
 
     function getTodayDate(){
         today = new Date();
+        console.log(today);
         todayArray = today.toString().split(" "); 
         todayArrayTime = todayArray[4];
         todayArrayTimeArray = todayArrayTime.split(":")
