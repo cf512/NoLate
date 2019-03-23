@@ -1,7 +1,7 @@
 var duration;
 var timeCheck=false;
 var timeCheckFinished=false;
-var date = new Date();
+var date;
 var transport;
 var myOptions;
 var mapObject;
@@ -24,6 +24,7 @@ function calculateRoute(from, to) {
     
     transport=localStorage.getItem("transport").toUpperCase();
 
+    date = new Date();
     arrivalText=date.toDateString()+" "+localStorage.getItem("requiredArrivalTime")+":00";
 
     if(moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ")<moment()) {
