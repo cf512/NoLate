@@ -1,43 +1,73 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
-
+/* img.bg {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+img.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+/*  */
 .btn-primary {
   margin-left: 45%;
   margin-top: 20px;
 }
-
-body {
-    margin: 10px 25px 10px 25px;
+html {
+  height: 100%;
 }
-
+body {
+    /* margin: 10px 25px 10px 25px; */
+    height: 100%;
+    overflow: hidden;
+    background-image: url("../images/italy.jpg");
+    background-size: 100% 100%;
+    z-index: -1;
+}
+#content-wrapper {
+  height: 100%;
+  overflow: auto;
+}
 #navBar {
-  /* border: solid #EC4F6A 8px; */
+  border: solid #EC4F6A 8px;
   width: 100%;
   margin: 5px;
-  padding-left: 3rem;
+  padding-left: 10rem;
   font-weight: bold;
 }
-
 .navbar-brand {
 font-size: 30px;
 font-family: 'Roboto', sans-serif;
 font-weight: bold;
 }
-
 #bodyWrap {
   font-size:25px;
-
 }
-
 .modal-content {
     padding: 20px;
 }
-
 #addressToInput {
     width: 400px;
 }
-
+#newDestination {
+  z-index: 1000;
+}
 #addressFromInput {
     width: 400px;
 }
@@ -50,9 +80,21 @@ font-weight: bold;
 }
 .modal{
     z-index: 20;
+    color: #FFFFFF;
+}
+.modal-content{
+  background-color:rgba(0,0,0,0.4);
 }
 .modal-backdrop{
     z-index: 10;
+}
+input {
+  background-color:rgba(0,0,0,0.1);
+  border:rgba(0,0,0,0.4);
+  color: white;
+}
+#nameInput {
+  color:white;
 }
 #map {
     width: 100%;
@@ -66,45 +108,35 @@ button.btn{
     display:none;
 }
 .gridContainer {
-  border: solid #EC4F6A 10px;
-  border-radius: 15px;
-  background-color: #FFFFFF;
+  z-index: 9;
+  background-color: ;
   padding: 30px;
   margin-top: 30px;
   font-family: 'roboto';
 }
 #commuteDataDump {
-
-  background-color: #FFFFFF;
+  color: white;
   text-align: center;
   padding-top: 90px;
 }
-
 #googleMapDump:hover {
   transform: scale(1.05);
-
 }
-
-
-#weatherDataDump:hover {
-  transform: scale(1.05);
-  background-color: #FFFFFF;
+#weatherDataDump {
+  color: white;
 }
-
 #weatherBox {
-  background-color: #FFFFFF;
+  /*background-color: blue;*/
   text-align: center;
 }
-
-
 #umbrellaAlert {
-  background-color: #FFFFFF;
+  color: yellow ;
   text-align: center;
-
 }
-
 #canvas {
   margin-top: -10px;
-  width: 10%;
-  height: 400px;
+  background:rgba(0,0,0,0.6);
+}
+#commuteDataDump {
+  color:magenta;
 }
