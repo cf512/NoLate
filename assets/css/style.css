@@ -24,7 +24,8 @@ img.bg {
     margin-left: -512px;   /* 50% */
   }
 }
-/*  */
+
+
 .btn-primary {
   margin-left: 45%;
   margin-top: 20px;
@@ -32,25 +33,37 @@ img.bg {
 html {
   height: 100%;
 }
+
 body {
   /* margin: 10px 25px 10px 25px; */
   height: 100%;
   /* background-image: url("../images/night.jpg"); */
 }
+
 #content-wrapper {
   height: 100%;
   overflow: scroll;
   height: 100%;
-  background-image: url("../images/tree.jpg");
+  background-image: url("../images/forest.jpg");
   background-size: 100% 100%;
   z-index: -1;
 }
+
 #navBar {
-  border: solid #EC4F6A 8px;
   width: 100%;
   margin: 5px;
-  padding-left: 10rem;
+  padding-left: 5%;
   font-weight: bold;
+  background-color:rgba(0,0,0,0.4) !important;
+
+}
+
+#brandSpan {
+  color: #FFFFFF;
+}
+
+#textSpan {
+  color: #FFFFFF;
 }
 .navbar-brand {
 font-size: 30px;
@@ -111,12 +124,12 @@ button.btn{
 .gridContainer {
   z-index: 9;
   background-color: ;
-  padding: 30px;
-  margin-top: 30px;
+  padding: 0;
+  margin-top: 0;
   font-family: 'roboto';
 }
 #commuteDataDump {
-  color: white;
+  color: #FFFFFF;
   text-align: center;
   padding-top: 90px;
 }
@@ -131,13 +144,15 @@ button.btn{
   text-align: center;
 }
 #umbrellaAlert {
-  color: yellow ;
+  color: #FFFFFF;
   text-align: center;
 }
 #canvas {
   margin-top: -10px;
   background:rgba(0,0,0,0.6);
+  color: #FFFFFF !important;
 }
-#commuteDataDump {
-  color:magenta;
+
+#relaventDataDiv {
+
 }
