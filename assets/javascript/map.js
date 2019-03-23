@@ -73,6 +73,7 @@ function googleCheck(from,to) {
                         timeCheck=false;
                         timeCheckFinished=false;
                         updateAlarmClock();
+                        getTodayDate();
                         return;
                     } else {
                         startTime.subtract(30, 'minutes');

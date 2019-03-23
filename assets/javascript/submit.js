@@ -34,8 +34,8 @@ function getTodayDate(){
     todayArrayTimeArray = todayArrayTime.split(":")
     todayArrayTimeHours = todayArrayTimeArray[0];
     todayArrayTimeMinutes = todayArrayTimeArray[1];
-
     todayArrayTimeSeconds = todayArrayTimeArray[2];
+    
     switch(todayArray[0]){
         case "Mon":
         todayArrayDay = "Monday";
@@ -98,8 +98,8 @@ function getTodayDate(){
         case "Dec":
         todayArrayDateConvertedMonth = "12"
         break;
-
     }
+
     todayArrayDate = todayArrayDateConvertedMonth+"/"+todayArray[2]+"/"+todayArray[3];
     $('#currentTime').text(todayArray[4]);
     $('#dayTime').text(todayArrayDay);
@@ -128,8 +128,6 @@ function init(){
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
-
-        getTodayDate();
 
         $("#myModal").modal('hide')
         $("#bodyWrap").show();
