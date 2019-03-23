@@ -129,13 +129,10 @@ function init(){
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
 
-        getTodayDate();
-
         $("#myModal").modal('hide')
         $("#bodyWrap").show();
         $("button.btn").show();
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
-        
     });
 
     if(checkCookie()) {

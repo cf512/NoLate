@@ -72,6 +72,7 @@ function googleCheck(from,to) {
                         localStorage.setItem('transitTime', duration);
                         timeCheck=false;
                         timeCheckFinished=false;
+                        getTodayDate();
                         updateAlarmClock();
                         return;
                     } else {
@@ -94,6 +95,5 @@ function googleCheck(from,to) {
                 }  
             }
         );
-
     }
 }
