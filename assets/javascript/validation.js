@@ -1,6 +1,4 @@
 $(function() { 
-    var check;
-
     function checkVal(test) {
         return !test.val();
     }

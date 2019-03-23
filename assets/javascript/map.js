@@ -8,6 +8,7 @@ var mapObject;
 var directionsService;
 var directionsDisplay;
 var directionsRequest;
+var noResult=false;
 
 function calculateRoute(from, to) { 
     myOptions = {
@@ -59,6 +60,9 @@ function googleCheck(from,to) {
             function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     var duration=response.routes[0].legs[0].duration.value;
+                    // if(duration/60/60>5) {
+                    //     return false;
+                    // }
                     if(arrivalDate.diff(startTime, 'seconds')>=duration) {
                         directionsDisplay.setMap(mapObject);
                         directionsDisplay.setDirections(response);
