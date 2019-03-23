@@ -33,16 +33,17 @@ html {
   height: 100%;
 }
 body {
-    /* margin: 10px 25px 10px 25px; */
-    height: 100%;
-    overflow: hidden;
-    background-image: url("../images/italy.jpg");
-    background-size: 100% 100%;
-    z-index: -1;
+  /* margin: 10px 25px 10px 25px; */
+  height: 100%;
+  /* background-image: url("../images/night.jpg"); */
 }
 #content-wrapper {
   height: 100%;
-  overflow: auto;
+  overflow: scroll;
+  height: 100%;
+  background-image: url("../images/tree.jpg");
+  background-size: 100% 100%;
+  z-index: -1;
 }
 #navBar {
   border: solid #EC4F6A 8px;
@@ -89,7 +90,7 @@ font-weight: bold;
     z-index: 10;
 }
 input {
-  background-color:rgba(0,0,0,0.1);
+  background-color:rgba(0,0,0,0.5);
   border:rgba(0,0,0,0.4);
   color: white;
 }
