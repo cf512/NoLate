@@ -20,19 +20,16 @@ function locationCheck1(){
           for (var i = 0; i < place1.address_components.length; i++) {
             var addressType = place1.address_components[i].types[0]; 
             if(addressType=="locality") {
-              console.log("here2");
               localStorage.setItem("fromCity",place1.address_components[i][componentForm[addressType]]); 
               autoResult1=true;
               inputCheck();
             } 
           }
         } else {
-          console.log("here3");
           $("#addressFromInput").val("");
           autoResult1=false;
         }
       } else {
-        console.log("here4");
         $("#addressFromInput").val("");
         autoResult1=false;
       }
