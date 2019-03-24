@@ -21,7 +21,7 @@
 <body>
   <div id="content-wrapper">
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-      aria-hidden="true" id="myModal">
+      aria-hidden="true" data-backdrop="static" data-keyboard="false" id="myModal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <form action="" method="" id="inputForm">
@@ -32,29 +32,28 @@
             <hr>
             <div class="fromInputDiv">
               <label>
-                <span>From Address: </span>
+                <span>From Address: </span><br>
                 <input type="text" class="fromInput" id="addressFromInput">
-
               </label>
             </div>
             <hr>
             <div id="toInputDiv">
               <label>
-                <span>To Address: </span>
+                <span>To Address: </span><br>
                 <input type="text" class="toInput" id="addressToInput">
               </label>
             </div>
             <hr>
             <div id="time">
-              <p>Required Arrival Time:</p>
+              <span>Required Arrival Time:</span><br>
               <input id="requiredArrivalTime" type="text" class="time" />
               <hr>
-              <p>Morning Routine Duration (in minutes):</p>
+              <span>Morning Routine Duration (in minutes):</span><br>
               <input type="number" id="morningRoutineTime">
             </div>
             <hr>
             <label>
-              <p>Transportation Method: </p>
+              <span>Transportation Method: </span><br>
               <select class="custom-select" id="transport">
                 <option value="Driving">Driving</option>
                 <option value="Transit">Transit</option>
