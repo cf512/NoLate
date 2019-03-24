@@ -72,24 +72,21 @@
       </div>
     </div>
     <!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
+
+  <nav class="navbar navbar-light bg-dark" id="navBar">
+    <!-- <a href="#canvas">Go To Chart</a> -->
+    <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
+    <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
+        class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
+        id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
+        class="mb-0 h3">01/01/1990</span></span>
+  </nav>
     <div id="bodyWrap">
       <div class="gridContainer">
         <div class="container">
-          <div class="row" >
-            <div class="col-sm-12">
-              <nav class="navbar navbar-light bg-dark" id="navBar">
-                <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
-                <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
-                    class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
-                    id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
-                    class="mb-0 h3">01/01/1990</span></span>
-              </nav>
-            </div>
-          </div>
-          <div class="row" >
-            <div class="col-sm-12 col-md-6 col-lg-6">
-              <div class="row">
-                <div class="col-sm-12" id="relaventDataDiv">
+          <div class="row">
+            <div class="col-sm-12 col-md-2 col-lg-2"></div>
+                <div class="col-sm-12 col-md-8 col-lg-8" id="relaventDataDiv">
                   <div id="commuteDataDump"></div>
                   <!-- <div id="weatherDataDump"></div> -->
                   <div id="umbrellaAlert"></div>
@@ -110,9 +107,10 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6" id="googleMapDump">
-              <div id="map">
+            <div class="row">
+              <div class="col-sm-12 col-md-2 col-lg-2"></div>
+              <div class="col-sm-12 col-md-8 col-lg-8" id="googleMapDump">
+                <div id="map">
               </div>
             </div>
           </div>
@@ -120,7 +118,7 @@
 
           <!-- next row -->
           <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
               <div class="row">
                 <div class="col-sm-12">
                   <h1 id="duration"></h1>
@@ -134,9 +132,10 @@
                   <div id="toAddressDiv"></div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- end of first pane of section set of side by sides -->
-            <div class="col-sm-12 col-md-6 col-lg-6" id="forecastDiv">
+            <div class="col-sm-12 col-md-2 col-lg-2"></div>
+            <div class="col-sm-12 col-md-8 col-lg-8" id="forecastDiv">
               <canvas id="canvas"></canvas>
             </div>
           </div>
@@ -156,6 +155,7 @@
     <script src="assets/javascript/OpenWeather.js"></script>
     <script src="assets/javascript/alarm.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwJU09xdlVGoX0Lq3ofnJP2nHyS4vs_U&libraries=places&callback=init" async defer></script>
+
     <!-- FOOTER -->
   </div>
   </body>

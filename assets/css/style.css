@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 } */
+
 img.bg {
   min-height: 100%;
   min-width: 1024px;
@@ -18,6 +19,7 @@ img.bg {
   top: 0;
   left: 0;
 }
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   img.bg {
     left: 50%;
@@ -30,6 +32,7 @@ img.bg {
   margin-left: 45%;
   margin-top: 20px;
 }
+
 html {
   height: 100%;
 }
@@ -40,23 +43,25 @@ body {
   /* background-image: url("../images/night.jpg"); */
 }
 
+
 #content-wrapper {
   height: 100%;
   overflow: scroll;
   height: 100%;
-  background-image: url("../images/forest.jpg");
+  background-image: url("../images/subway.jpg");
   background-size: 100% 100%;
   z-index: -1;
 }
 
+
 #navBar {
   width: 100%;
-  margin: 5px;
   padding-left: 5%;
   font-weight: bold;
-  background-color:rgba(0,0,0,0.4) !important;
+  background-color:rgba(0,0,0,.5) !important;
 
 }
+
 
 #brandSpan {
   color: #FFFFFF;
@@ -97,62 +102,114 @@ font-weight: bold;
     color: #FFFFFF;
 }
 .modal-content{
-  background-color:rgba(0,0,0,0.4);
+  margin-top: 12%;
+  background-color:rgba(0,0,0,0.3);
 }
 .modal-backdrop{
     z-index: 10;
+
 }
+
 input {
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(0,0,0,0.8);
   border:rgba(0,0,0,0.4);
   color: white;
 }
+
 #nameInput {
   color:white;
 }
+
 #map {
     width: 100%;
     height: 400px;
     margin-top: 10px;
 }
+
 #bodyWrap {
     display:none;
 }
+
 button.btn{
     display:none;
 }
+
 .gridContainer {
   z-index: 9;
   background-color: ;
   padding: 0;
   margin-top: 0;
   font-family: 'roboto';
+
+  height:600px;
+  overflow: auto;
+
 }
+
 #commuteDataDump {
   color: #FFFFFF;
   text-align: center;
-  padding-top: 90px;
+
 }
+
 #googleMapDump:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  margin: 100px,0,100px,0;
+  padding-bottom: 100px;
+
+
 }
+
+
+
 #weatherDataDump {
   color: white;
 }
+
 #weatherBox {
-  /*background-color: blue;*/
+
   text-align: center;
 }
+
 #umbrellaAlert {
   color: #FFFFFF;
   text-align: center;
+  margin-bottom: 100px;
 }
+
 #canvas {
-  margin-top: -10px;
+  margin-top: 20px;
   background:rgba(0,0,0,0.6);
-  color: #FFFFFF !important;
+  margin-bottom:50px;
 }
 
 #relaventDataDiv {
+  /* background-color:rgba(0,0,0,0.6); */
+  margin-top: 15%;
+  font-size: 35px;
+  font-weight:
+}
 
+
+#newDestination {
+  margin-bottom:30px;
+}
+
+#alarmButton {
+  margin-bottom: 30px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+ background:rgba(0,0,0,0.5);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background:rgba(0,0,0,0.9);
 }
