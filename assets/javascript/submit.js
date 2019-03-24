@@ -129,6 +129,7 @@ function init(){
         $("#myModal").modal('hide')
         $("#bodyWrap").show();
         $("button.btn").show();
+        $("nav").show();
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
     });
 
