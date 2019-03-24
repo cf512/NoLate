@@ -107,6 +107,8 @@ function getTodayDate(){
 }
 
 function init(){
+    initAutocomplete();
+    
     if (typeof navigator.geolocation == "undefined") {
         $("#error").text("Your browser doesn't support the Geolocation API");
         return;
@@ -126,9 +128,12 @@ function init(){
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
-        var arrayFromAddress = $("#addressToInput").val().split(",");
-        localStorage.setItem("toCity", arrayFromAddress[arrayFromAddress.length-3].trim() );
-        console.log(arrayFromAddress[arrayFromAddress.length-3].trim());
+        // var arrayToAddress = $("#addressToInput").val().split(",");
+        // localStorage.setItem("toCity", arrayToAddress[arrayFromAddress.length-3].trim() );
+        // console.log(arrayToAddress[arrayFromAddress.length-3].trim());
+        // var arrayFromAddress = $("#addressFromInput").val().split(",");
+        // localStorage.setItem("toCity", arrayFromAddress[arrayFromAddress.length-3].trim() );
+        // console.log(arrayFromAddress[arrayFromAddress.length-3].trim());
 
         getTodayDate();
 
@@ -144,7 +149,7 @@ function init(){
         
     }
 
-    initAutocomplete();
+    
 }
     
 
