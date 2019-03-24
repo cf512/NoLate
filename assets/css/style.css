@@ -134,14 +134,22 @@ button.btn{
     display:none;
 }
 
+nav {
+  display:none;
+}
+
+:disabled {
+  opacity: 0.4;
+}
+
 .gridContainer {
   z-index: 9;
-  background-color: ;
+  /* background-color: ; */
   padding: 0;
   margin-top: 0;
   font-family: 'roboto';
 
-  height:600px;
+  height:1000px;
   overflow: auto;
 
 }
@@ -167,7 +175,7 @@ button.btn{
 }
 
 #weatherBox {
-
+  color:white;
   text-align: center;
 }
 

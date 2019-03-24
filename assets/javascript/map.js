@@ -46,7 +46,14 @@ function calculateRoute(from, to) {
     transport=localStorage.getItem("transport").toUpperCase();
 
     date = new Date();
-    arrivalText=date.toDateString()+" "+localStorage.getItem("requiredArrivalTime")+":00";
+
+    var amText=localStorage.getItem("requiredArrivalTime").substr(localStorage.getItem("requiredArrivalTime").length-2,2);
+    var timeText=localStorage.getItem("requiredArrivalTime").substr(0,localStorage.getItem("requiredArrivalTime").length-2);
+    if(amText=="pm") {
+        var timeText1=parseInt(timeText.split(":")[0])+12;
+        timeText=timeText1+":"+timeText.split(":")[1];
+    }
+    arrivalText=date.toDateString()+" "+timeText+":00";
 
     if(moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ")<moment()) {
         arrivalDate=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ").add(1, 'days');

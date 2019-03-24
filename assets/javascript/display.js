@@ -11,11 +11,13 @@ if(checkCookie()) {
     $("#myModal").hide();
     $("button.btn").show();
     $("#bodyWrap").show();
+    $("nav").show();
   });
 } else {
   $(window).on('load',function(){
     $('#myModal').modal('show');
     $("button.btn").hide();
     $("#bodyWrap").hide();
+    $("nav").hide();
   });
 }
