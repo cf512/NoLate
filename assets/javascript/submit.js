@@ -101,7 +101,10 @@ function getTodayDate(){
 
     }
     todayArrayDate = todayArrayDateConvertedMonth+"/"+todayArray[2]+"/"+todayArray[3];
-    $('#currentTime').text(todayArray[4]);
+    $('#nameSpan').text(localStorage.getItem("name"));
+    var currentTimeMinusSecondsArray = todayArray[4].split(":");
+    var currentTimeMinusSeconds = currentTimeMinusSecondsArray[0]+":"+currentTimeMinusSecondsArray[1];
+    $('#currentTime').text(currentTimeMinusSeconds);
     $('#dayTime').text(todayArrayDay);
     $('#dateTime').text(todayArrayDate);
 }

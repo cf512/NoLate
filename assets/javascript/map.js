@@ -56,11 +56,11 @@ function calculateRoute(from, to) {
     arrivalText=date.toDateString()+" "+timeText+":00";
 
     if(moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ")<moment()) {
-        arrivalDate=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ").add(1, 'days');
-        startTime=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ").add(1, 'days');
+        arrivalDate=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss a ZZ").add(1, 'days');
+        startTime=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss a ZZ").add(1, 'days');
     } else {
-        arrivalDate=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ");
-        startTime=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss ZZ");
+        arrivalDate=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss a ZZ");
+        startTime=moment(arrivalText,"ddd MMM DD YYYY HH:mm:ss a ZZ");
     }
 
     startTime.subtract(30, 'minutes');
@@ -104,7 +104,8 @@ function googleCheck(from,to) {
                         directionsDisplay.setMap(mapObject);
                         directionsDisplay.setDirections(response);
                         directionsDisplay.getMap().setZoom(15);
-                        localStorage.setItem('startTime', startTime.subtract(localStorage.getItem("morningRoutineTime"), 'minutes').format('HH:mm'));
+                        localStorage.setItem('departTime', startTime.format('HH:mm a'));
+                        localStorage.setItem('startTime', startTime.subtract(localStorage.getItem("morningRoutineTime"), 'minutes').format('HH:mm a'));
                         localStorage.setItem('transitTime', duration);
                         timeCheck=false;
                         timeCheckFinished=false;
