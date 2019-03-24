@@ -7,9 +7,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Heebo|Roboto:400,700" rel="stylesheet">
   <script src="assets/javascript/display.js"></script>
@@ -73,38 +78,39 @@
     </div>
     <!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
 
-  <nav class="navbar navbar-light bg-dark" id="navBar">
-    <!-- <a href="#canvas">Go To Chart</a> -->
-    <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
-    <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
-        class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
-        id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
-        class="mb-0 h3">01/01/1990</span></span>
-  </nav>
+    <nav class="navbar navbar-light bg-dark" id="navBar">
+      <!-- <a href="#canvas">Go To Chart</a> -->
+      <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
+      <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan" class="mb-0 h3">Roger</span>.
+        It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span id="dayTime"
+          class="mb-0 h3">Monday</span>, <span id="dateTime" class="mb-0 h3">01/01/1990</span></span>
+    </nav>
     <div id="bodyWrap">
       <div class="gridContainer">
         <div class="container">
-          <div class="row" >
+          <!-- <div class="row" >
             <div class="col-sm-12">
-              <!-- <nav class="navbar navbar-light bg-dark" id="navBar">
+              <nav class="navbar navbar-light bg-dark" id="navBar">
                 <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
                 <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
                     class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
                     id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
                     class="mb-0 h3">01/01/1990</span></span>
-              </nav> -->
+              </nav>
             </div>
-          </div>
-          <div class="row" >
+          </div> -->
+          <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
               <div class="row">
                 <div class="col-sm-12" id="relaventDataDiv">
                   <div id="commuteDataDump">
                     <div id="arrivalDiv">To arrive by: <span id="arrivalTime">00:00</span>...</div>
-                    <div id="startDiv">leave by: <span id="startTime">00:00</span><span id="startTimeAMPM"></span>.</div>
-                    <br/>
-                    <div id="yourWeather">Current Weather: <span id="yourWeatherTemp">00.00</span>&#176;  <span id="yourWeatherIcon"></span></div>
-                    <div id="destinationWeather">Weather at Destination: <span id="destinationWeatherTemp">00.00</span>&#176;  <span id="destinationWeatherIcon"></span></div>
+                    <div id="startDiv">leave by: <span id="startTime">00:00</span><span id="startTimeAMPM"></span>.
+                    </div>
+                    <br />
+                    <div id="yourWeather">Current Weather: <span id="yourWeatherTemp">00.00</span>&#176; <span
+                        id="yourWeatherIcon"></span></div>
+                    <div id="destinationWeather">Destination: <span id="destinationWeatherTemp">00.00</span>&#176; <span id="destinationWeatherIcon"></span></div>
                   </div>
                 </div>
               </div>
@@ -123,59 +129,60 @@
                   </div>
                 </div>
               </div>
-            <div class="row">
-              <div class="col-sm-12 col-md-2 col-lg-2"></div>
-              <div class="col-sm-12 col-md-8 col-lg-8" id="googleMapDump">
-                <div id="map">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6" id="googleMapDump">
+              <div id="map">
               </div>
             </div>
           </div>
-          <!-- end of first section of side by sides -->
+        <!-- end of first section of side by sides -->
 
-          <!-- next row -->
-          <div class="row">
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h3 id="duration">Transit Duration: </h3><span id="durationTime">0 hours and 00 minutes</span>
-                  <h3 id="morningRoutine">Routine Time: </h3><span id="routineSpan">text</span>
-                </div>
+        <!-- next row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 id="duration">Transit Duration: </h3><span id="durationTime">0 hours and 00 minutes</span>
+                <h3 id="morningRoutine">Routine Time: </h3><span id="routineSpan">text</span>
               </div>
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <div id="fromAddressDiv">From Address:</div>
-                  <div id="fromAddressDiv"></div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div id="toAddressDiv">To Address:</div>
-                    <div id="toAddressDiv"> </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- end of first pane of section set of side by sides -->
-            <div class="col-sm-12 col-md-2 col-lg-2"></div>
-            <div class="col-sm-12 col-md-8 col-lg-8" id="forecastDiv">
-              <canvas id="canvas"></canvas>
             </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div id="fromAddressDiv">From Address:</div>
+                <div id="fromAddressDiv"></div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div id="toAddressDiv">To Address:</div>
+                <div id="toAddressDiv"> </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of first pane of section set of side by sides -->
+          <div class="col-sm-12 col-md-6 col-lg-6" id="forecastDiv">
+            <canvas id="canvas"></canvas>
           </div>
         </div>
       </div>
     </div>
-    <!-- end of bodywrap -->
-
-    <script type="text/javascript">
-      $('#requiredArrivalTime').timepicker({ 'scrollDefault': 'now' });
-    </script>
-    <script src="assets/javascript/autocomplete.js"></script>
-    <script src="assets/javascript/submit.js"></script>
-    <script src="assets/javascript/map.js"></script>
-    <script src="assets/javascript/validation.js"></script>
-    <script src="assets/javascript/currentWeather.js"></script>
-    <script src="assets/javascript/OpenWeather.js"></script>
-    <script src="assets/javascript/alarm.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwJU09xdlVGoX0Lq3ofnJP2nHyS4vs_U&libraries=places&callback=init" async defer></script>
-
-    <!-- FOOTER -->
   </div>
-  </body>
+  <!-- end of bodywrap -->
+
+  <script type="text/javascript">
+    $('#requiredArrivalTime').timepicker({ 'scrollDefault': 'now' });
+  </script>
+  <script src="assets/javascript/autocomplete.js"></script>
+  <script src="assets/javascript/submit.js"></script>
+  <script src="assets/javascript/map.js"></script>
+  <script src="assets/javascript/validation.js"></script>
+  <script src="assets/javascript/currentWeather.js"></script>
+  <script src="assets/javascript/OpenWeather.js"></script>
+  <script src="assets/javascript/alarm.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwJU09xdlVGoX0Lq3ofnJP2nHyS4vs_U&libraries=places&callback=init"
+    async defer></script>
+
+  <!-- FOOTER -->
+  </div>
+</body>
+
 </html>
