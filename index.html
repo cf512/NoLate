@@ -90,9 +90,13 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
               <div class="row">
                 <div class="col-sm-12" id="relaventDataDiv">
-                  <div id="commuteDataDump"></div>
-                  <!-- <div id="weatherDataDump"></div> -->
-                  <div id="umbrellaAlert"></div>
+                  <div id="commuteDataDump">
+                    <div id="arrivalDiv">To arrive by: <span id="arrivalTime">00:00</span>...</div>
+                    <div id="startDiv">leave by: <span id="startTime">00:00</span><span id="startTimeAMPM"></span>.</div>
+                    <br/>
+                    <div id="yourWeather">Current Weather: <span id="yourWeatherTemp">00.00</span>&#176;  <span id="yourWeatherIcon"></span></div>
+                    <div id="destinationWeather">Weather at Destination: <span id="destinationWeatherTemp">00.00</span>&#176;  <span id="destinationWeatherIcon"></span></div>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -123,15 +127,18 @@
             <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
               <div class="row">
                 <div class="col-sm-12">
-                  <h1 id="duration"></h1>
+                  <h3 id="duration">Transit Duration: </h3><span id="durationTime">0 hours and 00 minutes</span>
+                  <h3 id="morningRoutine">Routine Time: </h3><span id="routineSpan">text</span>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
+                  <div id="fromAddressDiv">From Address:</div>
                   <div id="fromAddressDiv"></div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                  <div id="toAddressDiv"></div>
+                    <div id="toAddressDiv">To Address:</div>
+                    <div id="toAddressDiv"> </div>
                 </div>
               </div>
             </div>

@@ -11,6 +11,26 @@ var directionsRequest;
 var noResult=false;
 
 function calculateRoute(from, to) { 
+
+    //immediately print values that not need calculation
+    $('#routineSpan').html(localStorage.getItem("morningRoutineTime")+" minutes");
+    $('#arrivalTime').text(localStorage.getItem("requiredArrivalTime"));
+    var fromAddressArray = localStorage.getItem("fromAddress").split(",");
+    var toAddressArray = localStorage.getItem("toAddress").split(",");
+    var fromAddressDiv = $('<div>');
+    fromAddressArray.forEach(function(element){
+        newDiv = $('<p>'+element+'</p>');
+        fromAddressDiv.append(newDiv);
+    });
+    $('#fromAddressDiv').html(fromAddressArray);
+
+    var toAddressDiv = $('<div>');
+    toAddressArray.forEach(function(element){
+        newDiv = $('<p>'+element+'</p>');
+        toAddressDiv.append(newDiv);
+    });
+    $('#toAddressDiv').html(toAddressArray);
+
     noResult=false;
     myOptions = {
         zoom: 15,
@@ -67,9 +87,9 @@ function googleCheck(from,to) {
                          timeCheck=false;
                          timeCheckFinished=false;
                          var newDiv = $('<div>');
-                         newDiv.append('<p> Too Long Distance </p>');
-                         newDiv.append('<p> This is for Commute, not Travel</p>');
-                         newDiv.append('<p> Get out!!</p>');   
+                         newDiv.append('<p> Oh. No! </p>');
+                         newDiv.append('<p> The trip duration is too long for us.</p>');
+                         newDiv.append('<p> Have you tried talking to a travel agent?</p>');   
                          $('#commuteDataDump').html(newDiv); 
                          return;
                     }
@@ -103,9 +123,9 @@ function googleCheck(from,to) {
                     timeCheck=false;
                     timeCheckFinished=false; 
                     var newDiv = $('<div>');
-                    newDiv.append('<p> Unfortunately, </p>');
-                    newDiv.append('<p> There is no way to arrive there</p>');
-                    newDiv.append('<p> I"m sorry!! </p>');   
+                    newDiv.append('<p> Oh. No! </p>');
+                    newDiv.append('<p> We were unable to get route information.</p>');
+                    newDiv.append('<p> Please try again. </p>');   
                     $('#commuteDataDump').html(newDiv);
                 }  
             }

@@ -122,7 +122,7 @@ function init(){
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
-
+        
         $("#myModal").modal('hide')
         $("#bodyWrap").show();
         $("button.btn").show();

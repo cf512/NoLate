@@ -35,12 +35,15 @@ function updateAlarmClock(){
     //transit time in seconds   Math.floor(localStorageObject.transitTime / 60)
     //transit time in minutes Math.floor(Math.floor(localStorageObject.transitTime / 60))
     
-    var newDiv = $('<div>');
-    newDiv.append('<p> Arrival Time:'+localStorageObject.requiredArrivalTime+ '</p>');
-    newDiv.append('<p> Transit Time:'+transitHoursOutput + transitMinutesOutput+ '</p>');
-    newDiv.append('<p> Morning Routine Total Time: '+localStorageObject.morningRoutineTime+ '</p>');   
-    newDiv.append('<p> Total Time to Deduct: '+totalHoursOutput+totalMinutesOutput+ '</p>');   
-    $('#commuteDataDump').html(newDiv); 
+   
+    
+    $('#startTime').text(localStorage.getItem("startTime"));
+
+    
+    $('#durationTime').text(transitHoursOutput + transitMinutesOutput);
+
+
+   
     
 };
 		
@@ -49,24 +52,25 @@ function updateAlarmClock(){
         var alarmTimer;
         
 		function setAlarm(button) {
-            var LocalStorageObject = window.localStorage;
+            // var LocalStorageObject = window.localStorage;
 
             //this sets the startTime to the requiredArrivalTime for testing
             
-            var isThisATwelve = localStorageObject.getItem("requiredArrivalTime").slice(localStorageObject.getItem("requiredArrivalTime").length-2);
-            var arrivalTimerArray = localStorageObject.getItem("requiredArrivalTime").slice(0,(localStorageObject.getItem("requiredArrivalTime").length-2)).split(":");
-            var arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1]
-            if(isThisATwelve.toLowerCase === "pm")
-            console.log(arrivalTimer);
-            arrivalTimer = parseInt(arrivalTimer)+1200;
+            // var isThisATwelve = localStorageObject.getItem("requiredArrivalTime").slice(localStorageObject.getItem("requiredArrivalTime").length-2);
+            // var arrivalTimerArray = localStorageObject.getItem("requiredArrivalTime").slice(0,(localStorageObject.getItem("requiredArrivalTime").length-2)).split(":");
+            // var arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1]
+            // if(isThisATwelve.toLowerCase === "pm")
+            // console.log(arrivalTimer);
+            // arrivalTimer = parseInt(arrivalTimer)+1200;
 
-            console.log(arrivalTimer);
-            // arrivalTimerArray = arrivalTimer.split(":");
-            // arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
-            LocalStorageObject.setItem("startTime", arrivalTimer);
+            // console.log(arrivalTimer);
+            // // arrivalTimerArray = arrivalTimer.split(":");
+            // // arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
+            // LocalStorageObject.setItem("startTime", arrivalTimer);
 
 
-            var ms = localStorageObject.getItem("startTime");
+            var msArray = localStorage.getItem("startTime").split(":");
+            var ms = msArray[0]+""+msArray[1];
 			if(isNaN(ms)) {
 				alert('Invalid Date');
 				return;
@@ -75,14 +79,14 @@ function updateAlarmClock(){
 
             getTodayDate();
             
-            var differenceInMs = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
+            var difference = (ms-(todayArrayTimeHours+""+todayArrayTimeMinutes))*60000;
             
-			if(differenceInMs < 0) {
-				alert('Specified time is already passed');
+			if(difference < 0) {
+				alert('The alarm time is in the past');
 				return;
 			}
 
-            alarmTimer = setTimeout(initAlarm, differenceInMs);
+            alarmTimer = setTimeout(initAlarm, difference);
 			button.innerText = 'Cancel Alarm';
 			button.setAttribute('onclick', 'cancelAlarm(this);');
 		};

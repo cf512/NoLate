@@ -1,67 +1,8 @@
-//==================test harness for pushing data==============================
-//always false data
-//always defaults to firebaseArray
-// cityConnection.set({
-//     lastUpdate: Date.now(),
-//     temp: 71.35,
-//     pressure: 1026,
-//     humidity: 36,
-//     speed: 4.7,
-//     description: "broken clouds",
-//     icon: "04d",
-//     id: 803,
-//     main: "Clouds",
-//     clouds: 24,
-//     sunset: 1553042478,
-// });
 
-// always true data
-//always defaults to AjaxArray
-// cityConnection.set({
-//     lastUpdate: $.now() + (1000 * 60 * 10.5),
-//     temp: 71.35,
-//     pressure: 1026,
-//     humidity: 36,
-//     speed: 4.7,
-//     description: "broken clouds",
-//     icon: "04d",
-//     id: 803,
-//     main: "Clouds",
-//     clouds: 24,
-//     sunset: 1553042478,
-//    });
-// ===================end test harness=====================
-
-
-// initializing firebase outside a function
-// var config = {
-//     apiKey: "AIzaSyBqq61A0kK_3nScseexY0EAY26DBym3s7c",
-//     authDomain: "firstteamproject-16be1.firebaseapp.com",
-//     databaseURL: "https://firstteamproject-16be1.firebaseio.com",
-//     projectId: "firstteamproject-16be1",
-//     storageBucket: "firstteamproject-16be1.appspot.com",
-//     messagingSenderId: "546682156707"
-// };
-
-// firebase.initializeApp(config);
-// var database = firebase.database();
 var localStorageObject = window.localStorage;
 var cityConnection = "";
 
-
-
-
-
-
-
-// ==============start of psuedocode comments, as if I had not done any development above===========================
-// ===============================================================================================================
-
-
-
 //global functions
-
-
 
 
 //made into a function so I can call it both on load, and button click
@@ -70,7 +11,7 @@ var cityConnection = "";
 // the if function for over 10 minutes old
 // the AJAX call for weather data if we dont get the data from firebase
 
-function updateWeatherDataFromLocal(snapshot) {
+function updateWeatherDataFromLocal(snapshot, location) {
     //firebase inspect city last updated timestamp compare with Date.now()+10minutes
     //included the temp check in case its just a lastUpdate time stamp 
     if ((snapshot.hasChild("temp")) && (snapshot.hasChild("lastUpdate")) && (snapshot.val().lastUpdate > ($.now()-(10 * 60 * 1000)) ) ){
@@ -99,9 +40,9 @@ function updateWeatherDataFromLocal(snapshot) {
         firebaseArray.push(snapshot.val().main);
         firebaseArray.push(snapshot.val().name);
 
-        updatePrintDisplay(firebaseArray);
-
-        compareWeatherId(firebaseArray);
+        updatePrintDisplay(firebaseArray, location);
+        appendIcon(firebaseArray, location)
+        // compareWeatherId(firebaseArray);
 
 
 
@@ -161,10 +102,10 @@ function updateWeatherDataFromLocal(snapshot) {
 
                 updateFirebase(newResponse);
 
-                updatePrintDisplay(ajaxResponseArray);
-
+                updatePrintDisplay(ajaxResponseArray, location);
+                appendIcon(ajaxResponseArray, location);
                 // inspect returned info for umbrella alert update
-                compareWeatherId(ajaxResponseArray);
+                // compareWeatherId(ajaxResponseArray);
                 
             });
     };
@@ -178,16 +119,21 @@ function updateWeatherDataFromLocal(snapshot) {
 
 // function updatePrintDisplay(object);
 //this updates the html text display
-function updatePrintDisplay(array) {
-    var newCollection = $('<div>');
-    for (var i = 0; i < array.length - 7; i++) {
-        var newP = $('<div>' + array[i] + ": " + array[i + 1] + '</div>');
+function updatePrintDisplay(array, location) {
+    // var newCollection = $('<div>');
+    // for (var i = 0; i < array.length - 7; i++) {
+    //     var newP = $('<div>' + array[i] + ": " + array[i + 1] + '</div>');
 
-        newCollection.append(newP);
-        //iterating twice so that I am using array like a dictionary
-        i++;
-    };
-    $('#weatherDataDump').html(newCollection);
+    //     newCollection.append(newP);
+    //     //iterating twice so that I am using array like a dictionary
+    //     i++;
+    // };
+    // $('#weatherDataDump').html(newCollection);
+    if(location === "your"){
+    $("#yourWeatherTemp").text(array[1]);
+    }else{
+    $('#destinationWeatherTemp').text(array[1]);
+    }
 };
 
 //this is for a save data from AJAX to firebase collection
@@ -214,29 +160,33 @@ function updateFirebase(newResponse) {
 };
 
 //this checks the weatherId against a list
-function compareWeatherId(array) {
-    if (200 < array[17] && array[17] < 299) {
-        $('#umbrellaAlert').text("Thunderstorms");
-        appendIcon(array);
-    } else if (300 < array[17] && array[17] < 399) {
-        $('#umbrellaAlert').text("Drizzle");
-        appendIcon(array);
-    } else if (500 < array[17] && array[17] < 599) {
-        $('#umbrellaAlert').text("It gone rain");
-        appendIcon(array);
-    } else if (600 < array[17] && array[17] < 699) {
-        $('#umbrellaAlert').text("Snow");
-        appendIcon(array);
-    } else {
-        $('#umbrellaAlert').text("Its going to be a wonderful day");
-        $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/02d.png">'));
-    };
-};
+// function compareWeatherId(array) {
+//     if (200 < array[17] && array[17] < 299) {
+//         $('#umbrellaAlert').text("Thunderstorms");
+//         appendIcon(array);
+//     } else if (300 < array[17] && array[17] < 399) {
+//         $('#umbrellaAlert').text("Drizzle");
+//         appendIcon(array);
+//     } else if (500 < array[17] && array[17] < 599) {
+//         $('#umbrellaAlert').text("It gone rain");
+//         appendIcon(array);
+//     } else if (600 < array[17] && array[17] < 699) {
+//         $('#umbrellaAlert').text("Snow");
+//         appendIcon(array);
+//     } else {
+//         $('#umbrellaAlert').text("Its going to be a wonderful day");
+//         $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/02d.png">'));
+//     };
+// };
 
 
 //this updates the condition icon and text alert display
-function appendIcon(array) {
-    $('#umbrellaAlert').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
+function appendIcon(array, location) {
+    if(location === "your"){
+        $('#yourWeatherIcon').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
+        }else{
+            $('#destinationWeatherIcon').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
+        }
 }
 
 
@@ -254,10 +204,14 @@ $(document).ready(function () {
         //added an update to weather on submit
         cityConnection = database.ref("/" + localStorageObject.toCity);
         cityConnection.once("value", function (snapshot) {
-            updateWeatherDataFromLocal(snapshot);
+            updateWeatherDataFromLocal(snapshot, "destination");
 
         });
+        cityConnection = database.ref("/" + localStorageObject.fromCity);
+        cityConnection.once("value", function (snapshot) {
+            updateWeatherDataFromLocal(snapshot, "your");
 
+        });
 
     });
 
@@ -265,7 +219,11 @@ $(document).ready(function () {
     if(localStorageObject.getItem("toCity")!==null){ 
         cityConnection = database.ref("/"+localStorageObject.toCity);
         cityConnection.once("value", function (snapshot) {
-            updateWeatherDataFromLocal(snapshot);
+            updateWeatherDataFromLocal(snapshot, "destination");
+        });
+        cityConnection = database.ref("/"+localStorageObject.fromCity);
+        cityConnection.once("value", function (snapshot) {
+            updateWeatherDataFromLocal(snapshot, "your");
         });
     }else{
         
