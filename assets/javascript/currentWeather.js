@@ -183,9 +183,9 @@ function updateFirebase(newResponse) {
 //this updates the condition icon and text alert display
 function appendIcon(array, location) {
     if(location === "your"){
-        $('#yourWeatherIcon').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
+        $('#yourWeatherIcon').html($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
         }else{
-            $('#destinationWeatherIcon').append($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
+            $('#destinationWeatherIcon').html($('<img src="https://openweathermap.org/img/w/' + array[15] + '.png">'));
         }
 }
 
