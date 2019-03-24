@@ -34,13 +34,14 @@ function updateAlarmClock(){
     
     //transit time in seconds   Math.floor(localStorageObject.transitTime / 60)
     //transit time in minutes Math.floor(Math.floor(localStorageObject.transitTime / 60))
-
+    
     var newDiv = $('<div>');
     newDiv.append('<p> Arrival Time:'+localStorageObject.requiredArrivalTime+ '</p>');
     newDiv.append('<p> Transit Time:'+transitHoursOutput + transitMinutesOutput+ '</p>');
     newDiv.append('<p> Morning Routine Total Time: '+localStorageObject.morningRoutineTime+ '</p>');   
     newDiv.append('<p> Total Time to Deduct: '+totalHoursOutput+totalMinutesOutput+ '</p>');   
     $('#commuteDataDump').html(newDiv); 
+    
 };
 		
 		var alarmSound = new Audio();

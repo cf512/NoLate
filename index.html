@@ -2,173 +2,161 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>IfLate>>NoLatte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NoLate</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Heebo|Roboto:400,700" rel="stylesheet">
   <script src="assets/javascript/display.js"></script>
   <script type="text/javascript" src="assets/javascript/jquery.timepicker.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/jquery.timepicker.css" />
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
-  <!-- NAV BAR -->
-
-  <!-- ********************************* -->
-
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true" id="myModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <form action="" method="" id="inputForm">
-          <div id="info">
-            <label for="nameInput">Name: </label>
-            <input type="text" id="nameInput">
-          </div>
-          <hr>
-          <div class="fromInputDiv">
-            <label>
-              <span>From Address: </span>
-              <input type="text" class="fromInput" id="addressFromInput">
-
-            </label>
-          </div>
-          <hr>
-          <div id="toInputDiv">
-            <label>
-              <span>To Address: </span>
-              <input type="text" class="toInput" id="addressToInput">
-            </label>
-          </div>
-          <hr>
-          <div id="time">
-            <p>Required Arrival Time:</p>
-            <input id="requiredArrivalTime" type="text" class="time" />
+  <div id="content-wrapper">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form action="" method="" id="inputForm">
+            <div id="info">
+              <label for="nameInput">Name: </label>
+              <input type="text" id="nameInput">
+            </div>
             <hr>
-            <p>Morning Routine Duration (in minutes):</p>
-            <input type="number" id="morningRoutineTime">
-          </div>
-          <hr>
-          <label>
-            <p>Transportation Method: </p>
-            <select class="custom-select" id="transport">
-              <option value="Driving">Driving</option>
-              <option value="Transit">Transit</option>
-              <option value="Bicycling">Bicycling</option>
-              <option value="Walking">Walking</option>
-            </select>
-          </label>
-          <hr>
-          <div id="reset_submit">
-            <input type="submit" id="submitButton" data-dismiss="modal" value="Submit">
-            <input type="reset" id="formReset" value="Reset">
-          </div>
-        </form>
+            <div class="fromInputDiv">
+              <label>
+                <span>From Address: </span>
+                <input type="text" class="fromInput" id="addressFromInput">
+
+              </label>
+            </div>
+            <hr>
+            <div id="toInputDiv">
+              <label>
+                <span>To Address: </span>
+                <input type="text" class="toInput" id="addressToInput">
+              </label>
+            </div>
+            <hr>
+            <div id="time">
+              <p>Required Arrival Time:</p>
+              <input id="requiredArrivalTime" type="text" class="time" />
+              <hr>
+              <p>Morning Routine Duration (in minutes):</p>
+              <input type="number" id="morningRoutineTime">
+            </div>
+            <hr>
+            <label>
+              <p>Transportation Method: </p>
+              <select class="custom-select" id="transport">
+                <option value="Driving">Driving</option>
+                <option value="Transit">Transit</option>
+                <option value="Bicycling">Bicycling</option>
+                <option value="Walking">Walking</option>
+              </select>
+            </label>
+            <hr>
+            <div id="reset_submit">
+              <input type="submit" id="submitButton" data-dismiss="modal" value="Submit">
+              <input type="reset" id="formReset" value="Reset">
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
-  <div id="bodyWrap">
-    <div class="gridContainer">
-      <div class="container">
-        <div class="row" >
-          <div class="col-sm-12">
-            <nav class="navbar navbar-light bg-light" id="navBar">
-              <span id="brandSpan" class="navbar-brand mb-0 h1">IfLate>>NoLatte</span>
-              <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
-                  class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
-                  id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
-                  class="mb-0 h3">01/01/1990</span></span>
-            </nav>
-          </div>
-        </div>
-        <div class="row" >
-          <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-sm-12" id="relaventDataDiv">
-                <div id="commuteDataDump"></div>
-                <!-- <div id="weatherDataDump"></div> -->
-                <div id="umbrellaAlert"></div>
-              </div>
+    <!--BEGINNING OF MAIN BODY / BOOTSTRAP GRID  -->
+    <div id="bodyWrap">
+      <div class="gridContainer">
+        <div class="container">
+          <div class="row" >
+            <div class="col-sm-12">
+              <nav class="navbar navbar-light bg-dark" id="navBar">
+                <span id="brandSpan" class="navbar-brand mb-0 h1">NoLate</span>
+                <span id="textSpan" class="navbar-text mb-0 h3">Good Morning, <span id="nameSpan"
+                    class="mb-0 h3">Roger</span>. It's:&nbsp;<span id="currentTime" class="h2">00:00</span> on&nbsp;<span
+                    id="dayTime" class="mb-0 h3">Monday</span>, <span id="dateTime"
+                    class="mb-0 h3">01/01/1990</span></span>
+              </nav>
             </div>
-            <div class="row">
-              <div class="col-md-5">
-                <!-- set Destination button -->
-                <button id="newDestination" type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Change Trip</button>
+          </div>
+          <div class="row" >
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row">
+                <div class="col-sm-12" id="relaventDataDiv">
+                  <div id="commuteDataDump"></div>
+                  <!-- <div id="weatherDataDump"></div> -->
+                  <div id="umbrellaAlert"></div>
+                </div>
               </div>
-              <div class="col-md-7">
-                <!-- set Alarm Button -->
-                <button id="alarmButton" class="btn btn-primary" onclick="setAlarm(this);">Set Alarm</button>
-                <div id="alarmOptions" style="display: none;">
-                  <button class="btn btn-secondary" onclick="snooze();">Snooze 5 minutes</button>
-                  <button class="btn btn-danger" onclick="stopAlarm();">Stop Alarm</button>
+              <div class="row">
+                <div class="col-md-5">
+                  <!-- set Destination button -->
+                  <button id="newDestination" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Change Trip</button>
+                </div>
+                <div class="col-md-7">
+                  <!-- set Alarm Button -->
+                  <button id="alarmButton" class="btn btn-primary" onclick="setAlarm(this);">Set Alarm</button>
+                  <div id="alarmOptions" style="display: none;">
+                    <button class="btn btn-secondary" onclick="snooze();">Snooze 5 minutes</button>
+                    <button class="btn btn-danger" onclick="stopAlarm();">Stop Alarm</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-6" id="googleMapDump">
-            <div id="map">
+            <div class="col-sm-12 col-md-6 col-lg-6" id="googleMapDump">
+              <div id="map">
+              </div>
             </div>
           </div>
-        </div>
-        <!-- end of first section of side by sides -->
+          <!-- end of first section of side by sides -->
 
-        <!-- next row -->
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
-            <div class="row">
-              <div class="col-sm-12">
-                <h1 id="duration"></h1>
+          <!-- next row -->
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6" id="weatherBox">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1 id="duration"></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div id="fromAddressDiv"></div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <div id="toAddressDiv"></div>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div id="fromAddressDiv"></div>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div id="toAddressDiv"></div>
-              </div>
+            <!-- end of first pane of section set of side by sides -->
+            <div class="col-sm-12 col-md-6 col-lg-6" id="forecastDiv">
+              <canvas id="canvas"></canvas>
             </div>
-          </div>
-          <!-- end of first pane of section set of side by sides -->
-          <div class="col-sm-12 col-md-6 col-lg-6" id="forecastDiv">
-            <canvas id="canvas"></canvas>
           </div>
         </div>
       </div>
     </div>
+    <!-- end of bodywrap -->
+
+    <script type="text/javascript">
+      $('#requiredArrivalTime').timepicker({ 'scrollDefault': 'now' });
+    </script>
+    <script src="assets/javascript/autocomplete.js"></script>
+    <script src="assets/javascript/submit.js"></script>
+    <script src="assets/javascript/map.js"></script>
+    <script src="assets/javascript/validation.js"></script>
+    <script src="assets/javascript/currentWeather.js"></script>
+    <script src="assets/javascript/OpenWeather.js"></script>
+    <script src="assets/javascript/alarm.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwJU09xdlVGoX0Lq3ofnJP2nHyS4vs_U&libraries=places&callback=init" async defer></script>
+    <!-- FOOTER -->
   </div>
-  <!-- end of bodywrap -->
-
-  <script type="text/javascript">
-    $('#requiredArrivalTime').timepicker({ 'scrollDefault': 'now' });
-  </script>
-  <script src="assets/javascript/autocomplete.js"></script>
-  <script src="assets/javascript/submit.js"></script>
-  <script src="assets/javascript/map.js"></script>
-  <script src="assets/javascript/validation.js"></script>
-  <script src="assets/javascript/currentWeather.js"></script>
-  <script src="assets/javascript/OpenWeather.js"></script>
-  <script src="assets/javascript/alarm.js"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_VMgrd_Qmg5Zn0bXcLZbxjbRzw6tjeVM&libraries=places&callback=init"
-    async defer></script>
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  <!-- FOOTER -->
-</body>
-
+  </body>
 </html>

@@ -107,12 +107,7 @@ function getTodayDate(){
 }
 
 function init(){
-    initAutocomplete();
-    
-    if (typeof navigator.geolocation == "undefined") {
-        $("#error").text("Your browser doesn't support the Geolocation API");
-        return;
-    }
+    validation();
 
     $("#submitButton").on("click",function(event){
         event.preventDefault();
@@ -121,35 +116,21 @@ function init(){
         setCookie("commuter"+$("#nameInput").val()+con.key,"true",1);
         $("#nameSpan").text($('#nameInput').val());
 
-        localStorage.clear();
         localStorage.setItem("name",$("#nameInput").val()); 
         localStorage.setItem("transport",$("#transport").val());
         localStorage.setItem("fromAddress",$("#addressFromInput").val()); 
         localStorage.setItem("toAddress",$("#addressToInput").val()); 
         localStorage.setItem("requiredArrivalTime", $("#requiredArrivalTime").val());
         localStorage.setItem("morningRoutineTime", $("#morningRoutineTime").val());
-        // var arrayToAddress = $("#addressToInput").val().split(",");
-        // localStorage.setItem("toCity", arrayToAddress[arrayFromAddress.length-3].trim() );
-        // console.log(arrayToAddress[arrayFromAddress.length-3].trim());
-        // var arrayFromAddress = $("#addressFromInput").val().split(",");
-        // localStorage.setItem("toCity", arrayFromAddress[arrayFromAddress.length-3].trim() );
-        // console.log(arrayFromAddress[arrayFromAddress.length-3].trim());
-
-        getTodayDate();
 
         $("#myModal").modal('hide')
         $("#bodyWrap").show();
         $("button.btn").show();
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
-        
     });
 
     if(checkCookie()) {
         calculateRoute(localStorage.getItem("fromAddress"), localStorage.getItem("toAddress"));
-        
     }
-
-    
 }
     
-
