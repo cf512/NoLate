@@ -11,6 +11,7 @@ var directionsRequest;
 var noResult=false;
 
 function calculateRoute(from, to) { 
+    noResult=false;
     myOptions = {
         zoom: 15,
         //scrollwheel:  false,
@@ -61,9 +62,17 @@ function googleCheck(from,to) {
             function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     var duration=response.routes[0].legs[0].duration.value;
-                    // if(duration/60/60>5) {
-                    //     return false;
-                    // }
+                    if(duration/60/60>5) {
+                         noResult=true;
+                         timeCheck=false;
+                         timeCheckFinished=false;
+                         var newDiv = $('<div>');
+                         newDiv.append('<p> Too Long Distance </p>');
+                         newDiv.append('<p> This is for Commute, not Travel</p>');
+                         newDiv.append('<p> Get out!!</p>');   
+                         $('#commuteDataDump').html(newDiv); 
+                         return;
+                    }
                     if(arrivalDate.diff(startTime, 'seconds')>=duration) {
                         directionsDisplay.setMap(mapObject);
                         directionsDisplay.setDirections(response);
@@ -91,7 +100,13 @@ function googleCheck(from,to) {
                         googleCheck(from,to);
                     }
                 } else {
-                    $("#error").append("Unable to retrieve your route<br />");
+                    timeCheck=false;
+                    timeCheckFinished=false; 
+                    var newDiv = $('<div>');
+                    newDiv.append('<p> Unfortunately, </p>');
+                    newDiv.append('<p> There is no way to arrive there</p>');
+                    newDiv.append('<p> I"m sorry!! </p>');   
+                    $('#commuteDataDump').html(newDiv);
                 }  
             }
         );

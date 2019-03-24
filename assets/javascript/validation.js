@@ -1,37 +1,37 @@
-$(function() { 
-    function checkVal(test) {
-        return !test.val();
+function checkVal(test) {
+    return !test.val();
+}
+
+function geoCheck(){
+    if (typeof navigator.geolocation == "undefined") {
+        $("#error").text("Your browser doesn't support the Geolocation API");
+        return;
     }
+}
 
+function inputCheck() {
+    if(checkVal($("#nameInput"))|| checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport")) || localStorage.getItem("fromCity")=="" || localStorage.getItem("toCity")=="" || !autoResult1 || !autoResult2) {
+        document.getElementById("submitButton").disabled=true
+    } else {
+        document.getElementById("submitButton").disabled=false
+    }
+}
+
+function formCheck(){
     document.getElementById("submitButton").disabled=true;
-
-    $('#addressFromInput').keypress(function(e) {
-        if (e.which == 13) {
-          google.maps.event.trigger(autocomplete1, 'place_changed');
-          return false;
-        }
-    });
-    $('#addressToInput').keypress(function(e) {
-        if (e.which == 13) {
-          google.maps.event.trigger(autocomplete2, 'place_changed');
-          return false;
-        }
-    });
-
-    $("input").on("focus", function(e){
+    
+    $("input").on("click focus", function(e){
         document.getElementById("submitButton").disabled=true;
-        if(checkVal($("#nameInput"))|| checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
-            document.getElementById("submitButton").disabled=true
-        } else {
-            document.getElementById("submitButton").disabled=false
-        }
+        inputCheck();
     });
 
     $("input").on("change", function(e){
-        if(checkVal($("#nameInput")) || checkVal($("#requiredArrivalTime")) || checkVal($("#morningRoutineTime")) || checkVal($("#transport"))) {
-            document.getElementById("submitButton").disabled=true
-        } else {
-            document.getElementById("submitButton").disabled=false
-        }
+        inputCheck();
     });
-});
+}
+
+function validation() {
+    geoCheck();
+    formCheck();
+    AutoCompleteCheck();
+}

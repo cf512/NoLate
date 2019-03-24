@@ -107,13 +107,7 @@ function getTodayDate(){
 }
 
 function init(){
-
-    initAutocomplete();
-
-    if (typeof navigator.geolocation == "undefined") {
-        $("#error").text("Your browser doesn't support the Geolocation API");
-        return;
-    }
+    validation();
 
     $("#submitButton").on("click",function(event){
         event.preventDefault();
