@@ -105,7 +105,7 @@ function googleCheck(from,to) {
                     var newDiv = $('<div>');
                     newDiv.append('<p> Unfortunately, </p>');
                     newDiv.append('<p> There is no way to arrive there</p>');
-                    newDiv.append('<p> I"m sorry!! </p>');   
+                    newDiv.append('<p> I'm sorry!! </p>');   
                     $('#commuteDataDump').html(newDiv);
                 }  
             }
