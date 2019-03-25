@@ -107,19 +107,19 @@
                     <div id="startDiv">leave by: <span id="startTime">00:00</span><span id="startTimeAMPM"></span>.
                     </div>
                     <br />
-                    <div id="yourWeather">Current Weather: <span id="yourWeatherTemp">00.00</span>&#176; <span
+                    <div id="yourWeather">Current Temp: <span id="yourWeatherTemp">00.00</span>&#176; <span
                         id="yourWeatherIcon"></span></div>
                     <div id="destinationWeather">Destination: <span id="destinationWeatherTemp">00.00</span>&#176; <span id="destinationWeatherIcon"></span></div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-sm-12 col-md-5">
                   <!-- set Destination button -->
                   <button id="newDestination" type="button" class="btn btn-primary" data-toggle="modal"
                     data-target=".bd-example-modal-lg" data-dismiss="modal" data-backdrop="static">Change Trip</button>
                 </div>
-                <div class="col-md-7">
+                <div class="col-sm-12 col-md-7">
                   <!-- set Alarm Button -->
                   <button id="alarmButton" class="btn btn-primary" onclick="setAlarm(this);">Set Alarm</button>
                   <div id="alarmOptions" style="display: none;">
@@ -157,6 +157,7 @@
             </div>
           </div>
           <!-- end of first pane of section set of side by sides -->
+
           <div class="col-sm-12 col-md-6 col-lg-6" style="text-align:center" id="forecastDiv">
             <h2>Current Weather:<h2>
             <div id="forecastDivInner"></div>
