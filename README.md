@@ -7,27 +7,27 @@ https://cf512.github.io/NoLate/
 ### About Our Project
 
 Facts:
-*It can be challenging to get to work or class on time for anyone who commutes.
-*15-20% of U.S. workers are late to the job on a regular basis (Inc. Magazine, 2018).
-*Google Maps has limitations and is invasive with location data needs.
+* It can be challenging to get to work or class on time for anyone who commutes.
+* 15-20% of U.S. workers are late to the job on a regular basis (Inc. Magazine, 2018).
+* Google Maps has limitations and is invasive with location data needs.
 
 Our Solution:
-*Our app provides real-time advice and a low effort update on when to leave to get to work or class on time.
-*Our solution is more simple, less invasive, and more accurate than existing solutions.
+* Our app provides real-time advice and a low effort update on when to leave to get to work or class on time.
+* Our solution is more simple, less invasive, and more accurate than existing solutions.
 
 ### Technologies Used
 
-*HTML5
-*CSS3
-*jQuery
-*Javascript
-*Twitter Bootstrap
-*Moment.js
-*Google Maps Javascript API
-*OpenWeatherMap API
-*Firebase
-*Local Storage
-*Cookies
+* HTML5
+* CSS3
+* jQuery
+* Javascript
+* Twitter Bootstrap
+* Moment.js
+* Google Maps Javascript API
+* OpenWeatherMap API
+* Firebase
+* Local Storage
+* Cookies
 
 ### Cookie Check
 
@@ -79,8 +79,8 @@ This is the user’s information stored in local storage. when using autocomplet
 
 ### Firebase / OpenWeatherMap API w/AJAX
 
--Problem: OpenWeatherMap API only updates every 10 minutes.
--Solution: Save data for a city to firebase for access during 10min interval.
+* Problem: OpenWeatherMap API only updates every 10 minutes.
+* Solution: Save data for a city to firebase for access during 10min interval.
 
 A.	Create a lastUpdatedCheck() and lastUpdated datapoint
 B.	Create an Ajax call to OpenWeatherMap API
@@ -88,13 +88,13 @@ C.	Create a saveToFirebase(), and a loadFromFirebase()
 
 ### Alarm and Date/Time
 
-*Moment.js for Google Map API departure time
-	*moment(dateVar).format(‘HH:mm a’);
-	*moment(dateVar).add(1,”days”);
-*new Date.toString() handling
-	*anArray = departureTime.toString.split(“:”);
-	*departureTimeminutes = anArray[1] - (somethingInMilliseconds *1000*60);
-	*departureTime= anArray[0]+”:”+departureTimeMinutes;
-*Carry the One
-	*if(anythingMinutes > 60) {hours++}
-	*if(anythingMinutes < 0) {hours-1 ; anythingMinutes + 60}
+* Moment.js for Google Map API departure time
+  * moment(dateVar).format(‘HH:mm a’);
+  * moment(dateVar).add(1,”days”);
+* new Date.toString() handling
+  * anArray = departureTime.toString.split(“:”);
+  * departureTimeminutes = anArray[1] - (somethingInMilliseconds *1000*60);
+  * departureTime= anArray[0]+”:”+departureTimeMinutes;
+* Carry the One
+  * if(anythingMinutes > 60) {hours++}
+  * if(anythingMinutes < 0) {hours-1 ; anythingMinutes + 60}
