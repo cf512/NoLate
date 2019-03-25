@@ -9,6 +9,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 } */
+th, td {
+  border: 1px solid black;
+}
 
 img.bg {
   min-height: 100%;
