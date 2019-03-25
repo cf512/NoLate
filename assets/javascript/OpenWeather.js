@@ -138,7 +138,7 @@ function updateChartData() {
                     },
                     title: {
                         display: true,
-                        text: '5 Day Forecast'
+                        text: 'Time Remaining in Week'
                     }
                 }
             });

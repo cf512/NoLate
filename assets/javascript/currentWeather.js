@@ -4,7 +4,6 @@ var cityConnection = "";
 
 //global functions
 
-
 //made into a function so I can call it both on load, and button click
 //this contains:
 // the if function for does a lastUpdate child exist for the city location of connection
@@ -28,7 +27,7 @@ function updateWeatherDataFromLocal(snapshot, location) {
         firebaseArray.push(snapshot.val().speed);
         firebaseArray.push("Description");
         firebaseArray.push(snapshot.val().description);
-        firebaseArray.push("Cloud Coverage");
+        firebaseArray.push("Cloud&nbsp;&");
         firebaseArray.push(snapshot.val().clouds + "%");
         firebaseArray.push("Sunset");
         firebaseArray.push(snapshot.val().sunset);
@@ -84,7 +83,7 @@ function updateWeatherDataFromLocal(snapshot, location) {
                 ajaxResponseArray.push(newResponse.wind.speed);
                 ajaxResponseArray.push("Description");
                 ajaxResponseArray.push(newResponse.weather[0].description);
-                ajaxResponseArray.push("Cloud Coverage");
+                ajaxResponseArray.push("Cloud&nbsp;%");
                 ajaxResponseArray.push(newResponse.clouds.all + "%");
                 ajaxResponseArray.push("Sunset");
                 ajaxResponseArray.push(newResponse.sys.sunset);
@@ -134,6 +133,40 @@ function updatePrintDisplay(array, location) {
     }else{
     $('#destinationWeatherTemp').text(array[1]);
     }
+    
+
+    //print to canvas area
+
+    // indexes[2,4,6,8,10], and their values
+    var newTable = $('<table>');
+    var everyOtherFlag = false;
+    var KeyArray=[];
+    var ValueArray=[];
+    // build arrays of the weather data I want
+    for (i=0; i<10; i++){
+        KeyArray.push(array[i+2]);
+        ValueArray.push(array[i+3])
+        i++;        
+    };
+    console.log('arrays');
+    console.log(KeyArray);
+    console.log(ValueArray);
+    // print those arrays to a table
+    var newHeaderRow = $('<tr>');
+    for (i=0;i<5;i++){
+        var newHeader = $("<th>"+KeyArray[i]+"</th>");
+        newHeaderRow.append(newHeader);
+    };
+    newTable.append(newHeaderRow);
+    var newDataRow = $('<tr>');
+    for (i=0;i<5;i++){
+        var newData = $("<td>"+ValueArray[i]+"</td>");
+        newDataRow.append(newData);
+    };
+    newTable.append(newDataRow);
+    console.log(newTable);
+
+    $('#forecastDivInner').html(newTable);
 };
 
 //this is for a save data from AJAX to firebase collection
