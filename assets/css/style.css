@@ -122,11 +122,10 @@ input {
 #nameInput {
   color:white;
 }
-
 #map {
     width: 100%;
-    height: 400px;
-    margin-top: 10px;
+    height: 300px;
+    margin-top: 77px;
 }
 
 #bodyWrap {
@@ -152,8 +151,8 @@ nav {
   margin-top: 0;
   font-family: 'roboto';
 
-  height:1000px;
-  overflow: auto;
+  /* height:1000px;
+  overflow: auto; */
 
 }
 
@@ -163,8 +162,7 @@ nav {
 
 }
 
-#googleMapDump:hover {
-  transform: scale(1.1);
+#googleMapDump {
   margin: 100px,0,100px,0;
   padding-bottom: 100px;
 
@@ -180,6 +178,8 @@ nav {
 #weatherBox {
   color:white;
   text-align: center;
+  background-color:rgba(0,0,0,0.6);
+  margin-bottom: 20px;
 }
 
 #umbrellaAlert {
@@ -195,9 +195,11 @@ nav {
 }
 
 #relaventDataDiv {
-  /* background-color:rgba(0,0,0,0.6); */
-  margin-top: 15%;
+  background-color:rgba(0,0,0,0.6);
+  margin-top: 13.5%;
   font-size: 35px;
+  padding-top: 22px;
+  padding-bottom: 18px;
   /* font-weight: */
 }
 
@@ -223,4 +225,26 @@ nav {
 /* Handle */
 ::-webkit-scrollbar-thumb {
 background:rgba(0,0,0,0.9);
+}
+
+/* #forecastDivInner {
+  overflow : scroll;
+  font-size: 30px;
+} */
+
+
+
+#forecastDiv {
+  color: #FFFFFF;
+  margin-top: 3%;
+  /* font-size: 12px; */
+}
+
+#forecastDivInner {
+ overflow : hidden;
+
+}
+table {
+ width:100%;
+ font-size:16px;
 }
