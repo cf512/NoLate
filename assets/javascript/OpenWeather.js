@@ -107,9 +107,7 @@ function updateChartData() {
             method: "GET"
         }).then(function (response) {
             // After the data from the AJAX request comes back
-            // Saving the response object
-            // var newResponse = response;
-            console.log(response);
+         
             // parseForecastDataIntoArray(newResponse);
     
             //this way the update Chart chain is embedded in AJAX command for AJAX data

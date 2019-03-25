@@ -70,8 +70,7 @@ function updateWeatherDataFromLocal(snapshot, location) {
                 var newResponse = response;
 
                 //create var object of data = location.data + weather.data ...etc
-                console.log("ajax response object");
-                console.log(response);
+               
                 var ajaxResponseArray = [];
                 ajaxResponseArray.push("Temperature");
                 ajaxResponseArray.push(newResponse.main.temp + "'F");
@@ -148,9 +147,7 @@ function updatePrintDisplay(array, location) {
         ValueArray.push(array[i+3])
         i++;        
     };
-    console.log('arrays');
-    console.log(KeyArray);
-    console.log(ValueArray);
+   
     // print those arrays to a table
     var newHeaderRow = $('<tr>');
     for (i=0;i<5;i++){
@@ -164,7 +161,7 @@ function updatePrintDisplay(array, location) {
         newDataRow.append(newData);
     };
     newTable.append(newDataRow);
-    console.log(newTable);
+  
 
     $('#forecastDivInner').html(newTable);
 };

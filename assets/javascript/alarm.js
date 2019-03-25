@@ -45,7 +45,7 @@ function updateAlarmClock() {
         arrivalTime = arrivalTime.slice(0, arrivalTime.length - 2);
         arrivalTime = parseInt(arrivalTime.split(":")[0] + arrivalTime.split(":")[1])
     }
-    console.log(arrivalTime + "arrivalTime");
+   
 
 
    
@@ -59,9 +59,6 @@ function updateAlarmClock() {
     var arrivalTimeHours = arrivalTime.slice(0,arrivalTime.length-2);
     var arrivalTimeMinutes = arrivalTime.slice(arrivalTime.length-2,);
 
-    console.log(arrivalTimeHours);
-    console.log(arrivalTimeMinutes);
-    console.log("hours then minutes, then timetoDeparthours, minutes / arrive remaining minutes, hours")
     
     var timeToDepartMinutes = parseInt(arrivalTimeMinutes) - totalTimeToArriveRemainingMinutes;
     var timeToDepartHours = parseInt(arrivalTimeHours) - totalTimeToArriveHours;
@@ -87,9 +84,6 @@ function updateAlarmClock() {
     var timeToAlarmMinutes = Math.floor(totalSecondsAlarm / 60);
     var timeToAlarmRemainingMinutes = Math.floor(timeToAlarmMinutes % 60);
     var timeToAlarmHours = Math.floor(timeToAlarmMinutes / 60);
-    console.log(timeToAlarmHours+ ", "+timeToAlarmMinutes);
-    console.log("arrival"+ arrivalTimeHours + ", "+arrivalTimeMinutes);
-
     if(timeToAlarmMinutes < 0){
         timeToAlarmHours = timeToAlarmHours -1;
         timeToAlarmMinutes = timeToAlarmMinutes + 60;
@@ -104,9 +98,7 @@ function updateAlarmClock() {
     }
 
     localStorage.setItem("startTime", totalTimeToAlarmHours+""+totalTimeToAlarmMinutes);
-    console.log(localStorage.getItem("startTime"));
-
-
+   
 };
 
 var alarmSound = new Audio();
@@ -114,23 +106,7 @@ alarmSound.src = 'FinalCountdown.mp3';
 var alarmTimer;
 
 function setAlarm(button) {
-    // var LocalStorageObject = window.localStorage;
-
-    //this sets the startTime to the requiredArrivalTime for testing
-
-    // var isThisATwelve = localStorageObject.getItem("requiredArrivalTime").slice(localStorageObject.getItem("requiredArrivalTime").length-2);
-    // var arrivalTimerArray = localStorageObject.getItem("requiredArrivalTime").slice(0,(localStorageObject.getItem("requiredArrivalTime").length-2)).split(":");
-    // var arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1]
-    // if(isThisATwelve.toLowerCase === "pm")
-    // console.log(arrivalTimer);
-    // arrivalTimer = parseInt(arrivalTimer)+1200;
-
-    // console.log(arrivalTimer);
-    // // arrivalTimerArray = arrivalTimer.split(":");
-    // // arrivalTimer = arrivalTimerArray[0]+""+arrivalTimerArray[1];
-    // LocalStorageObject.setItem("startTime", arrivalTimer);
-
-
+ 
     var ms = parseInt(localStorage.getItem("startTime"));
     if (isNaN(ms)) {
         alert('Invalid Date');
