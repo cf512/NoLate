@@ -69,11 +69,11 @@ problem, we are using this geocoder function.
 
 ### Local storage & Place library (AutoComplete)
 
-*User input : Name, Required Arrival Time, Morning Routine Time , Transportation Method, Addresses
-*AutoComplete(+Place lib) : address of city (to, from), city name
-*Google map calculation : Transit Time, Departure Time
-*Alarm Calculations
-*→ All data is stored in Local storage
+* User input : Name, Required Arrival Time, Morning Routine Time , Transportation Method, Addresses
+* AutoComplete(+Place lib) : address of city (to, from), city name
+* Google map calculation : Transit Time, Departure Time
+* Alarm Calculations
+* → All data is stored in Local storage
 
 This is the user’s information stored in local storage. when using autocomplete address and place library we can automatically get the specific information of location like this.
 
@@ -82,9 +82,9 @@ This is the user’s information stored in local storage. when using autocomplet
 * Problem: OpenWeatherMap API only updates every 10 minutes.
 * Solution: Save data for a city to firebase for access during 10min interval.
 
-A.	Create a lastUpdatedCheck() and lastUpdated datapoint
-B.	Create an Ajax call to OpenWeatherMap API
-C.	Create a saveToFirebase(), and a loadFromFirebase()
+1. Create a lastUpdatedCheck() and lastUpdated datapoint
+2. Create an Ajax call to OpenWeatherMap API
+3. Create a saveToFirebase(), and a loadFromFirebase()
 
 ### Alarm and Date/Time
 
